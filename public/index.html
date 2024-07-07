@@ -133,80 +133,77 @@
 
   <!-- JS Plugins Init. -->
   <script>
-    (function () {
-      window.onload = function () {
+    window.onload = function () {
+      if (typeof HSSideNav !== 'undefined') {
+        new HSSideNav('.js-navbar-vertical-aside').init();
+      } else {
+        console.error('HSSideNav is not defined');
+      }
 
+      if (typeof HSFormSearch !== 'undefined') {
+        new HSFormSearch('.js-form-search');
+      } else {
+        console.error('HSFormSearch is not defined');
+      }
 
-        // INITIALIZATION OF NAVBAR VERTICAL ASIDE
-        // =======================================================
-        new HSSideNav('.js-navbar-vertical-aside').init()
+      if (typeof HSBsDropdown !== 'undefined') {
+        HSBsDropdown.init();
+      } else {
+        console.error('HSBsDropdown is not defined');
+      }
 
+      if (typeof HsNavScroller !== 'undefined') {
+        new HsNavScroller('.js-nav-scroller');
+      } else {
+        console.error('HsNavScroller is not defined');
+      }
 
-        // INITIALIZATION OF FORM SEARCH
-        // =======================================================
-        new HSFormSearch('.js-form-search')
-
-
-        // INITIALIZATION OF BOOTSTRAP DROPDOWN
-        // =======================================================
-        HSBsDropdown.init()
-
-
-        // INITIALIZATION OF NAV SCROLLER
-        // =======================================================
-        new HsNavScroller('.js-nav-scroller')
-
-
-        // INITIALIZATION OF STICKY BLOCKS
-        // =======================================================
+      if (typeof HSStickyBlock !== 'undefined') {
         new HSStickyBlock('.js-sticky-block', {
           targetSelector: document.getElementById('header').classList.contains('navbar-fixed') ? '#header' : null
-        })
-
-
-        // INITIALIZATION OF FILE ATTACHMENT
-        // =======================================================
-        // new HSFileAttach('.js-file-attach')
+        });
+      } else {
+        console.error('HSStickyBlock is not defined');
       }
-    })()
+    };
   </script>
 
   <!-- Style Switcher JS -->
 
   <script>
-      (function () {
-        // STYLE SWITCHER
-        // =======================================================
-        const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
-        const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
+    (function () {
+      // STYLE SWITCHER
+      // =======================================================
+      const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
+      const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
 
-        // Function to set active style in the dorpdown menu and set icon for dropdown trigger
-        const setActiveStyle = function () {
-          $variants.forEach($item => {
-            if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
-              $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
-              return $item.classList.add('active')
-            }
+      // Function to set active style in the dorpdown menu and set icon for dropdown trigger
+      const setActiveStyle = function () {
+        $variants.forEach($item => {
+          if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
+            $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+            return $item.classList.add('active')
+          }
 
-            $item.classList.remove('active')
-          })
-        }
-
-        // Add a click event to all items of the dropdown to set the style
-        $variants.forEach(function ($item) {
-          $item.addEventListener('click', function () {
-            HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
-          })
+          $item.classList.remove('active')
         })
+      }
 
-        // Call the setActiveStyle on load page
+      // Add a click event to all items of the dropdown to set the style
+      $variants.forEach(function ($item) {
+        $item.addEventListener('click', function () {
+          HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
+        })
+      })
+
+      // Call the setActiveStyle on load page
+      setActiveStyle()
+
+      // Add event listener on change style to call the setActiveStyle function
+      window.addEventListener('on-hs-appearance-change', function () {
         setActiveStyle()
-
-        // Add event listener on change style to call the setActiveStyle function
-        window.addEventListener('on-hs-appearance-change', function () {
-          setActiveStyle()
-        })
-      })()
+      })
+    })()
   </script>
 </body>
 

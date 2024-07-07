@@ -28,7 +28,7 @@
 }
 
 @media (max-width:1200px) {
-    .navbar-verticle-height16 {
+    .hide-nav-mobile {
         position: fixed;
         margin-left: -18rem;
     }

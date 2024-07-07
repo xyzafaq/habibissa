@@ -4,7 +4,7 @@ export default function Sidebar() {
     const [isExpanded, setisExpanded] = useState(true);
 
     return (
-        <aside className={`${isExpanded ? 'navbar-verticle-width16' : 'navbar-verticle-width6'} js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-expand-xl navbar-bordered bg-white`}>
+        <aside className={`${isExpanded ? 'navbar-verticle-width16' : 'navbar-verticle-width6'} hide-nav-mobile js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-expand-xl navbar-bordered bg-white`}>
             <div className="navbar-vertical-container">
                 <div className="navbar-vertical-footer-offset">
                     {/* Logo */}
