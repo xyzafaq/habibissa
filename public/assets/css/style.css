@@ -3,12 +3,8 @@
     align-items: start;
 }
 
-.navbar-verticle-width16 {
+.navbar-verticle-height16 {
     width: 16.25rem;
-}
-
-.navbar-verticle-width6 {
-    width: 6.25rem;
 }
 
 .main {

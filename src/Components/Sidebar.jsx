@@ -1,10 +1,10 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 
 export default function Sidebar() {
-    const [isExpanded,setisExpanded] = useState(true); 
+    const [isExpanded, setisExpanded] = useState(true);
 
     return (
-        <aside className="js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-verticle-height16 navbar-expand-xl navbar-bordered bg-white">
+        <aside className={`${isExpanded ? 'navbar-verticle-width16' : 'navbar-verticle-width6'} js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-expand-xl navbar-bordered bg-white`}>
             <div className="navbar-vertical-container">
                 <div className="navbar-vertical-footer-offset">
                     {/* Logo */}
@@ -17,10 +17,10 @@ export default function Sidebar() {
                     {/* End Logo */}
                     {/* Navbar Vertical Toggle */}
                     <button type="button" className="js-navbar-vertical-aside-toggle-invoker navbar-aside-toggler">
-                        { isExpanded ? 
-                            <i className="bi-arrow-bar-left navbar-toggler-short-align" data-bs-template="<div class=&quot;tooltip d-none d-md-block&quot; role=&quot;tooltip&quot;><div class=&quot;arrow&quot;></div><div class=&quot;tooltip-inner&quot;></div></div>" data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse" />
+                        {isExpanded ?
+                            <i className="bi-arrow-bar-left navbar-toggler-short-align" onClick={() => { setisExpanded(false) }} data-bs-template="<div class=&quot;tooltip d-none d-md-block&quot; role=&quot;tooltip&quot;><div class=&quot;arrow&quot;></div><div class=&quot;tooltip-inner&quot;></div></div>" data-bs-toggle="tooltip" data-bs-placement="right" title="Collapse" />
                             :
-                            <i className="bi-arrow-bar-right navbar-toggler-full-align" data-bs-template="<div class=&quot;tooltip d-none d-md-block&quot; role=&quot;tooltip&quot;><div class=&quot;arrow&quot;></div><div class=&quot;tooltip-inner&quot;></div></div>" data-bs-toggle="tooltip" data-bs-placement="right" title="Expand" />
+                            <i className="bi-arrow-bar-right navbar-toggler-full-align" onClick={() => { setisExpanded(true) }} data-bs-template="<div class=&quot;tooltip d-none d-md-block&quot; role=&quot;tooltip&quot;><div class=&quot;arrow&quot;></div><div class=&quot;tooltip-inner&quot;></div></div>" data-bs-toggle="tooltip" data-bs-placement="right" title="Expand" />
                         }
                     </button>
                     {/* End Navbar Vertical Toggle */}

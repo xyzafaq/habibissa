@@ -11,11 +11,12 @@
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
   <title>My Profile | Front - Admin &amp; Dashboard Template</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../src/assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
-  <link rel="preload" href="../src/assets/css/theme.min.css" data-hs-appearance="default" as="style">
-  <link rel="preload" href="../src/assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
-  <script src="../src/assets/js/hs.theme-appearance.js"></script>
-  <script src="../src/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+  <link rel="stylesheet" href="%PUBLIC_URL%/assets/vendor/bootstrap-icons/font/bootstrap-icons.css">
+  <link rel="preload" href="%PUBLIC_URL%/assets/css/theme.min.css" data-hs-appearance="default" as="style">
+  <link rel="preload" href="%PUBLIC_URL%/assets/css/theme-dark.min.css" data-hs-appearance="dark" as="style">
+  <script src="%PUBLIC_URL%/assets/js/hs.theme-appearance.js"></script>
+  <script
+    src="%PUBLIC_URL%/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
   <style data-hs-appearance-onload-styles>
     * {
       transition: unset !important;
@@ -109,61 +110,65 @@
 </head>
 
 <body>
-  <script src="./assets/js/hs.theme-appearance.js"></script>
-  <script src="./assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
+  <script src="%PUBLIC_URL%/assets/js/hs.theme-appearance.js"></script>
+  <script
+    src="%PUBLIC_URL%/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside-mini-cache.js"></script>
   <noscript>You need to enable JavaScript to run this app.</noscript>
   <div id="root"></div>
 
   <!-- JS Global Compulsory  -->
-  <script src="./assets/vendor/jquery/dist/jquery.min.js"></script>
-  <script src="./assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
-  <script src="./assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/jquery/dist/jquery.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/jquery-migrate/dist/jquery-migrate.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
   <!-- JS Implementing Plugins -->
-  <script src="./assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
-  <script src="./assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/hs-navbar-vertical-aside/dist/hs-navbar-vertical-aside.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/hs-form-search/dist/hs-form-search.min.js"></script>
 
-  <script src="./assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
-  <script src="./assets/vendor/hs-sticky-block/dist/hs-sticky-block.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/hs-nav-scroller/dist/hs-nav-scroller.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/hs-sticky-block/dist/hs-sticky-block.min.js"></script>
 
   <!-- JS Front -->
-  <script src="./assets/js/theme.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/js/theme.min.js"></script>
 
   <!-- JS Plugins Init. -->
   <script>
-    window.onload = function () {
-      if (typeof HSSideNav !== 'undefined') {
-        new HSSideNav('.js-navbar-vertical-aside').init();
-      } else {
-        console.error('HSSideNav is not defined');
-      }
+    (function () {
+      window.onload = function () {
 
-      if (typeof HSFormSearch !== 'undefined') {
-        new HSFormSearch('.js-form-search');
-      } else {
-        console.error('HSFormSearch is not defined');
-      }
 
-      if (typeof HSBsDropdown !== 'undefined') {
-        HSBsDropdown.init();
-      } else {
-        console.error('HSBsDropdown is not defined');
-      }
+        // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+        // =======================================================
+        new HSSideNav('.js-navbar-vertical-aside').init()
 
-      if (typeof HsNavScroller !== 'undefined') {
-        new HsNavScroller('.js-nav-scroller');
-      } else {
-        console.error('HsNavScroller is not defined');
-      }
 
-      if (typeof HSStickyBlock !== 'undefined') {
+        // INITIALIZATION OF FORM SEARCH
+        // =======================================================
+        new HSFormSearch('.js-form-search')
+
+
+        // INITIALIZATION OF BOOTSTRAP DROPDOWN
+        // =======================================================
+        HSBsDropdown.init()
+
+
+        // INITIALIZATION OF NAV SCROLLER
+        // =======================================================
+        new HsNavScroller('.js-nav-scroller')
+
+
+        // INITIALIZATION OF STICKY BLOCKS
+        // =======================================================
         new HSStickyBlock('.js-sticky-block', {
           targetSelector: document.getElementById('header').classList.contains('navbar-fixed') ? '#header' : null
-        });
-      } else {
-        console.error('HSStickyBlock is not defined');
+        })
+
+
+        // INITIALIZATION OF FILE ATTACHMENT
+        // =======================================================
+        // new HSFileAttach('.js-file-attach')
       }
-    };
+    })()
   </script>
 
   <!-- Style Switcher JS -->

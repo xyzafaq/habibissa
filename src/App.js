@@ -1,7 +1,7 @@
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import './assets/css/theme.min.css'
-import './assets/vendor/bootstrap-icons/font/bootstrap-icons.css'
+// import '../public/assets/vendor/bootstrap-icons/font/bootstrap-icons.css'
 import './assets/css/style.css'
 // import './assets/css/theme-dark.min.css'
 import Sidebar from './Components/Sidebar'
