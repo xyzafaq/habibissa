@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from './Component/Header'
 
 export default function ProjectOverview() {
     return (
@@ -115,23 +116,7 @@ export default function ProjectOverview() {
                                 <i className="bi-chevron-right" />
                             </a>
                         </span>
-                        <ul className="nav nav-tabs page-header-tabs" id="projectsTab" role="tablist">
-                            <li className="nav-item">
-                                <a className="nav-link active" href="./project.html">Overview</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project-files.html">Files</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project-activity.html">Activity</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project-teams.html">Teams</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project-settings.html">Settings</a>
-                            </li>
-                        </ul>
+                        <Header />
                     </div>
                     {/* End Nav */}
                 </div>
@@ -1105,6 +1090,174 @@ export default function ProjectOverview() {
                 </div>
                 {/* End Card */}
             </div>
+            {/* Activity */}
+            <div className="offcanvas offcanvas-end" tabIndex={-1} id="offcanvasActivityStream" aria-labelledby="offcanvasActivityStreamLabel">
+                <div className="offcanvas-header">
+                    <h4 id="offcanvasActivityStreamLabel" className="mb-0">Activity stream</h4>
+                    <button type="button" className="btn-close" data-bs-dismiss="offcanvas" aria-label="Close" />
+                </div>
+                <div className="offcanvas-body">
+                    {/* Step */}
+                    <ul className="step step-icon-sm step-avatar-sm">
+                        {/* Step Item */}
+                        <li className="step-item">
+                            <div className="step-content-wrapper">
+                                <div className="step-avatar">
+                                    <img className="step-avatar" src="./assets/img/160x160/img9.jpg" alt="Image Description" />
+                                </div>
+                                <div className="step-content">
+                                    <h5 className="mb-1">Iana Robinson</h5>
+                                    <p className="fs-5 mb-1">Added 2 files to task <a className="text-uppercase" href="#"><i className="bi-journal-bookmark-fill" /> Fd-7</a></p>
+                                    <ul className="list-group list-group-sm">
+                                        {/* List Item */}
+                                        <li className="list-group-item list-group-item-light">
+                                            <div className="row gx-1">
+                                                <div className="col-6">
+                                                    {/* Media */}
+                                                    <div className="d-flex">
+                                                        <div className="flex-shrink-0">
+                                                            <img className="avatar avatar-xs" src="./assets/svg/brands/excel-icon.svg" alt="Image Description" />
+                                                        </div>
+                                                        <div className="flex-grow-1 text-truncate ms-2">
+                                                            <span className="d-block fs-6 text-dark text-truncate" title="weekly-reports.xls">weekly-reports.xls</span>
+                                                            <span className="d-block small text-muted">12kb</span>
+                                                        </div>
+                                                    </div>
+                                                    {/* End Media */}
+                                                </div>
+                                                {/* End Col */}
+                                                <div className="col-6">
+                                                    {/* Media */}
+                                                    <div className="d-flex">
+                                                        <div className="flex-shrink-0">
+                                                            <img className="avatar avatar-xs" src="./assets/svg/brands/word-icon.svg" alt="Image Description" />
+                                                        </div>
+                                                        <div className="flex-grow-1 text-truncate ms-2">
+                                                            <span className="d-block fs-6 text-dark text-truncate" title="weekly-reports.xls">weekly-reports.xls</span>
+                                                            <span className="d-block small text-muted">4kb</span>
+                                                        </div>
+                                                    </div>
+                                                    {/* End Media */}
+                                                </div>
+                                                {/* End Col */}
+                                            </div>
+                                            {/* End Row */}
+                                        </li>
+                                        {/* End List Item */}
+                                    </ul>
+                                    <span className="small text-muted text-uppercase">Now</span>
+                                </div>
+                            </div>
+                        </li>
+                        {/* End Step Item */}
+                        {/* Step Item */}
+                        <li className="step-item">
+                            <div className="step-content-wrapper">
+                                <span className="step-icon step-icon-soft-dark">B</span>
+                                <div className="step-content">
+                                    <h5 className="mb-1">Bob Dean</h5>
+                                    <p className="fs-5 mb-1">Marked <a className="text-uppercase" href="#"><i className="bi-journal-bookmark-fill" /> Fr-6</a> as <span className="badge bg-soft-success text-success rounded-pill"><span className="legend-indicator bg-success" />"Completed"</span></p>
+                                    <span className="small text-muted text-uppercase">Today</span>
+                                </div>
+                            </div>
+                        </li>
+                        {/* End Step Item */}
+                        {/* Step Item */}
+                        <li className="step-item">
+                            <div className="step-content-wrapper">
+                                <div className="step-avatar">
+                                    <img className="step-avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description" />
+                                </div>
+                                <div className="step-content">
+                                    <h5 className="h5 mb-1">Crane</h5>
+                                    <p className="fs-5 mb-1">Added 5 card to <a href="#">Payments</a></p>
+                                    <ul className="list-group list-group-sm">
+                                        <li className="list-group-item list-group-item-light">
+                                            <div className="row gx-1">
+                                                <div className="col">
+                                                    <img className="img-fluid rounded" src="./assets/svg/components/card-1.svg" alt="Image Description" />
+                                                </div>
+                                                <div className="col">
+                                                    <img className="img-fluid rounded" src="./assets/svg/components/card-2.svg" alt="Image Description" />
+                                                </div>
+                                                <div className="col">
+                                                    <img className="img-fluid rounded" src="./assets/svg/components/card-3.svg" alt="Image Description" />
+                                                </div>
+                                                <div className="col-auto align-self-center">
+                                                    <div className="text-center">
+                                                        <a href="#">+2</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <span className="small text-muted text-uppercase">May 12</span>
+                                </div>
+                            </div>
+                        </li>
+                        {/* End Step Item */}
+                        {/* Step Item */}
+                        <li className="step-item">
+                            <div className="step-content-wrapper">
+                                <span className="step-icon step-icon-soft-info">D</span>
+                                <div className="step-content">
+                                    <h5 className="mb-1">David Lidell</h5>
+                                    <p className="fs-5 mb-1">Added a new member to Front Dashboard</p>
+                                    <span className="small text-muted text-uppercase">May 15</span>
+                                </div>
+                            </div>
+                        </li>
+                        {/* End Step Item */}
+                        {/* Step Item */}
+                        <li className="step-item">
+                            <div className="step-content-wrapper">
+                                <div className="step-avatar">
+                                    <img className="step-avatar-img" src="./assets/img/160x160/img7.jpg" alt="Image Description" />
+                                </div>
+                                <div className="step-content">
+                                    <h5 className="mb-1">Rachel King</h5>
+                                    <p className="fs-5 mb-1">Marked <a className="text-uppercase" href="#"><i className="bi-journal-bookmark-fill" /> Fr-3</a> as <span className="badge bg-soft-success text-success rounded-pill"><span className="legend-indicator bg-success" />"Completed"</span></p>
+                                    <span className="small text-muted text-uppercase">Apr 29</span>
+                                </div>
+                            </div>
+                        </li>
+                        {/* End Step Item */}
+                        {/* Step Item */}
+                        <li className="step-item">
+                            <div className="step-content-wrapper">
+                                <div className="step-avatar">
+                                    <img className="step-avatar-img" src="./assets/img/160x160/img5.jpg" alt="Image Description" />
+                                </div>
+                                <div className="step-content">
+                                    <h5 className="mb-1">Finch Hoot</h5>
+                                    <p className="fs-5 mb-1">Earned a "Top endorsed" <i className="bi-patch-check-fill text-primary" /> badge</p>
+                                    <span className="small text-muted text-uppercase">Apr 06</span>
+                                </div>
+                            </div>
+                        </li>
+                        {/* End Step Item */}
+                        {/* Step Item */}
+                        <li className="step-item">
+                            <div className="step-content-wrapper">
+                                <span className="step-icon step-icon-soft-primary">
+                                    <i className="bi-person-fill" />
+                                </span>
+                                <div className="step-content">
+                                    <h5 className="mb-1">Project status updated</h5>
+                                    <p className="fs-5 mb-1">Marked <a className="text-uppercase" href="#"><i className="bi-journal-bookmark-fill" /> Fr-3</a> as <span className="badge bg-soft-primary text-primary rounded-pill"><span className="legend-indicator bg-primary" />"In progress"</span></p>
+                                    <span className="small text-muted text-uppercase">Feb 10</span>
+                                </div>
+                            </div>
+                        </li>
+                        {/* End Step Item */}
+                    </ul>
+                    {/* End Step */}
+                    <div className="d-grid">
+                        <a className="btn btn-white" href="javascript:;">View all <i className="bi-chevron-right" /></a>
+                    </div>
+                </div>
+            </div>
+            {/* End Activity */}
             <div className="modal fade" id="shareWithPeopleModal" tabIndex={-1} aria-labelledby="shareWithPeopleModalLabel" aria-hidden="true">
                 <div className="modal-dialog modal-dialog-centered">
                     <div className="modal-content">

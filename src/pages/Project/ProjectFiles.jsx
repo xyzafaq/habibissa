@@ -1,4 +1,5 @@
 import React from 'react'
+import Header from './Component/Header'
 
 export default function ProjectFiles() {
     return (
@@ -61,23 +62,7 @@ export default function ProjectFiles() {
                                 <i className="bi-chevron-right" />
                             </a>
                         </span>
-                        <ul className="nav nav-tabs page-header-tabs" id="projectsTab" role="tablist">
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project.html">Overview</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link active" href="./project-files.html">Files</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project-activity.html">Activity</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project-teams.html">Teams</a>
-                            </li>
-                            <li className="nav-item">
-                                <a className="nav-link " href="./project-settings.html">Settings</a>
-                            </li>
-                        </ul>
+                        <Header />
                     </div>
                     {/* End Nav */}
                 </div>

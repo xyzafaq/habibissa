@@ -18,6 +18,9 @@ import AddUser from './pages/Users/AddUser'
 import Default from './pages/Dashboards/Default'
 import ProjectOverview from './pages/Project/ProjectOverview'
 import ProjectFiles from './pages/Project/ProjectFiles'
+import ProjectActivity from './pages/Project/ProjectActivity'
+import ProjectTeams from './pages/Project/ProjectTeams'
+import ProjectSetting from './pages/Project/ProjectSetting'
 
 export default function App() {
   return (
@@ -38,6 +41,9 @@ export default function App() {
             <Route path='/my-profile' element={<MyProfile />} />
             <Route path='/project-overview' element={<ProjectOverview />} />
             <Route path='/project-files' element={<ProjectFiles />} />
+            <Route path='/project-activity' element={<ProjectActivity />} />
+            <Route path='/project-teams' element={<ProjectTeams />} />
+            <Route path='/project-setting' element={<ProjectSetting />} />
             <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />
