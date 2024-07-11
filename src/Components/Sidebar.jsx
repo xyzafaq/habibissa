@@ -169,7 +169,7 @@ export default function Sidebar() {
                                     </a>
                                     <div id="navbarVerticalMenuPagesProjectMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
                                         <a className={getNavLinkClass('/project-overview')} href="/project-overview" >Overview</a>
-                                        <a className={getNavLinkClass('/project-files')} onClick={()=>{goToPage('/project-files')}} >Files</a>
+                                        <a className={getNavLinkClass('/project-files')} onClick={() => { goToPage('/project-files') }} >Files</a>
                                         <a className="nav-link " href="./project-activity.html">Activity</a>
                                         <a className="nav-link " href="./project-teams.html">Teams</a>
                                         <a className="nav-link " href="./project-settings.html">Settings</a>
