@@ -27,6 +27,10 @@
     padding-left: 10%;
 }
 
+.pointer {
+    cursor: pointer;
+}
+
 @media (max-width:1200px) {
     .hide-nav-mobile {
         position: fixed;

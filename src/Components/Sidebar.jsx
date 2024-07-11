@@ -1,7 +1,19 @@
 import React, { useState } from 'react'
+import { useNavigate, useLocation } from 'react-router-dom';
 
 export default function Sidebar() {
     const [isExpanded, setisExpanded] = useState(true);
+
+    const navigate = useNavigate();
+    const location = useLocation();
+
+    const goToPage = (page) => {
+        navigate(page);
+    }
+
+    const getNavLinkClass = (page) => {
+        return location.pathname === page ? 'nav-link pointer active' : 'nav-link pointer';
+    }
 
     return (
         <aside className={`${isExpanded ? 'navbar-verticle-width16' : 'navbar-verticle-width6'} hide-nav-mobile js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-expand-xl navbar-bordered bg-white`}>
@@ -65,11 +77,11 @@ export default function Sidebar() {
                                         <span className="nav-link-title">User Profile <span className="badge bg-primary rounded-pill ms-1">5</span></span>
                                     </a>
                                     <div id="navbarVerticalMenuPagesUserProfileMenu" className="nav-collapse collapse show" data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className="nav-link active" href="./user-profile.html">Profile</a>
-                                        <a className="nav-link " href="./user-profile-teams.html">Teams</a>
-                                        <a className="nav-link " href="./user-profile-projects.html">Projects</a>
-                                        <a className="nav-link " href="./user-profile-connections.html">Connections</a>
-                                        <a className="nav-link " href="./user-profile-my-profile.html">My Profile</a>
+                                        <a className={getNavLinkClass('/profile')} onClick={() => { goToPage('/profile') }} >Profile</a>
+                                        <a className={getNavLinkClass('/teams')} onClick={() => { goToPage('/teams') }} >Teams</a>
+                                        <a className={getNavLinkClass('/projects')} onClick={() => { goToPage('/projects') }} >Projects</a>
+                                        <a className={getNavLinkClass('/connections')} onClick={() => { goToPage('/connections') }} >Connections</a>
+                                        <a className={getNavLinkClass('/my-profile')} onClick={() => { goToPage('/my-profile') }} >My Profile</a>
                                     </div>
                                 </div>
                                 {/* End Collapse */}

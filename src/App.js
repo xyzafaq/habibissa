@@ -6,8 +6,12 @@ import './assets/css/style.css'
 // import './assets/css/theme-dark.min.css'
 import Sidebar from './Components/Sidebar'
 import Navbar from './Components/Navbar'
-import UserProfile from './pages/UserProfile'
+import UserProfile from './pages/UserProfile/UserProfile'
 import FooterOfPage from './Components/FooterOfPage'
+import Teams from './pages/UserProfile/Teams'
+import Projects from './pages/UserProfile/Projects'
+import Connections from './pages/UserProfile/Connections'
+import MyProfile from './pages/UserProfile/MyProfile'
 
 export default function App() {
   return (
@@ -18,7 +22,11 @@ export default function App() {
         <main id="content" role="main" className="main">
           <Routes>
             <Route path='/' element={<UserProfile />} />
-            <Route path='user-profile' element={<UserProfile />} />
+            <Route path='/user-profile' element={<UserProfile />} />
+            <Route path='/teams' element={<Teams />} />
+            <Route path='/projects' element={<Projects />} />
+            <Route path='/connections' element={<Connections />} />
+            <Route path='/my-profile' element={<MyProfile />} />
             <Route path='*' element={<UserProfile />} />
           </Routes>
           <FooterOfPage />
