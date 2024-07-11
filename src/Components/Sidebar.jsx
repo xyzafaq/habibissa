@@ -46,7 +46,7 @@ export default function Sidebar() {
                                     <span className="nav-link-title">Dashboards</span>
                                 </a>
                                 <div id="navbarVerticalMenuDashboards" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenu">
-                                    <a className="nav-link " href="./index.html">Default</a>
+                                    <a className="nav-link " href="./">Default</a>
                                     <a className="nav-link " href="./dashboard-alternative.html">Alternative</a>
                                 </div>
                             </div>
@@ -64,9 +64,9 @@ export default function Sidebar() {
                                         <span className="nav-link-title">Users</span>
                                     </a>
                                     <div id="navbarVerticalMenuPagesUsersMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className={getNavLinkClass('/overview')} onClick={() => { goToPage('/overview') }}>Overview</a>
+                                        <a className={getNavLinkClass('/overview')} href='/overview' >Overview</a>
                                         <a className={getNavLinkClass('/leaderboard')} onClick={() => { goToPage('/leaderboard') }}>Leaderboard</a>
-                                        <a className="nav-link ">Add User <span className="badge bg-info rounded-pill ms-1">Hot</span></a>
+                                        <a className={getNavLinkClass('/add-user')} href='/add-user' >Add User <span className="badge bg-info rounded-pill ms-1">Hot</span></a>
                                     </div>
                                 </div>
                                 {/* End Collapse */}
@@ -156,7 +156,7 @@ export default function Sidebar() {
                                         <span className="nav-link-title">Projects</span>
                                     </a>
                                     <div id="navbarVerticalMenuPagesProjectsMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className="nav-link " href="./projects.html">Overview</a>
+                                        <a className={getNavLinkClass('/my-profile')} href="./project-overview">Overview</a>
                                         <a className="nav-link " href="./projects-timeline.html">Timeline</a>
                                     </div>
                                 </div>
@@ -168,8 +168,8 @@ export default function Sidebar() {
                                         <span className="nav-link-title">Project</span>
                                     </a>
                                     <div id="navbarVerticalMenuPagesProjectMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className="nav-link " href="./project.html">Overview</a>
-                                        <a className="nav-link " href="./project-files.html">Files</a>
+                                        <a className={getNavLinkClass('/project-overview')} href="/project-overview" >Overview</a>
+                                        <a className={getNavLinkClass('/project-files')} onClick={()=>{goToPage('/project-files')}} >Files</a>
                                         <a className="nav-link " href="./project-activity.html">Activity</a>
                                         <a className="nav-link " href="./project-teams.html">Teams</a>
                                         <a className="nav-link " href="./project-settings.html">Settings</a>

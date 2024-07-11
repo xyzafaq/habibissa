@@ -14,6 +14,10 @@ import Connections from './pages/UserProfile/Connections'
 import MyProfile from './pages/UserProfile/MyProfile'
 import Overview from './pages/Users/Overview'
 import Leaderboard from './pages/Users/Leaderboard'
+import AddUser from './pages/Users/AddUser'
+import Default from './pages/Dashboards/Default'
+import ProjectOverview from './pages/Project/ProjectOverview'
+import ProjectFiles from './pages/Project/ProjectFiles'
 
 export default function App() {
   return (
@@ -23,15 +27,18 @@ export default function App() {
         <Sidebar />
         <main id="content" role="main" className="main">
           <Routes>
-            <Route path='/' element={<UserProfile />} />
+            <Route path='/' element={<Default />} />
+            <Route path='/overview' element={<Overview />} />
+            <Route path='/leaderboard' element={<Leaderboard />} />
+            <Route path='/add-user' element={<AddUser />} />
             <Route path='/user-profile' element={<UserProfile />} />
             <Route path='/teams' element={<Teams />} />
             <Route path='/projects' element={<Projects />} />
             <Route path='/connections' element={<Connections />} />
             <Route path='/my-profile' element={<MyProfile />} />
-            <Route path='/overview' element={<Overview />} />
-            <Route path='/leaderboard' element={<Leaderboard />} />
-            <Route path='*' element={<UserProfile />} />
+            <Route path='/project-overview' element={<ProjectOverview />} />
+            <Route path='/project-files' element={<ProjectFiles />} />
+            <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />
         </main>

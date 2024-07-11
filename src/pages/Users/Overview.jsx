@@ -19,7 +19,7 @@ export default function User() {
                         </div>
                         {/* End Col */}
                         <div className="col-sm-auto">
-                            <a className="btn btn-primary" href="./users-add-user.html">
+                            <a className="btn btn-primary" href="./add-user">
                                 <i className="bi-person-plus-fill me-1" /> Add user
                             </a>
                         </div>
