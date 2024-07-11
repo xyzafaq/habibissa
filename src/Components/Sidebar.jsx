@@ -64,9 +64,9 @@ export default function Sidebar() {
                                         <span className="nav-link-title">Users</span>
                                     </a>
                                     <div id="navbarVerticalMenuPagesUsersMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className="nav-link " href="./users.html">Overview</a>
-                                        <a className="nav-link " href="./users-leaderboard.html">Leaderboard</a>
-                                        <a className="nav-link " href="./users-add-user.html">Add User <span className="badge bg-info rounded-pill ms-1">Hot</span></a>
+                                        <a className={getNavLinkClass('/overview')} onClick={() => { goToPage('/overview') }}>Overview</a>
+                                        <a className={getNavLinkClass('/leaderboard')} onClick={() => { goToPage('/leaderboard') }}>Leaderboard</a>
+                                        <a className="nav-link ">Add User <span className="badge bg-info rounded-pill ms-1">Hot</span></a>
                                     </div>
                                 </div>
                                 {/* End Collapse */}

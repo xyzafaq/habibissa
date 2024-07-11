@@ -12,6 +12,8 @@ import Teams from './pages/UserProfile/Teams'
 import Projects from './pages/UserProfile/Projects'
 import Connections from './pages/UserProfile/Connections'
 import MyProfile from './pages/UserProfile/MyProfile'
+import Overview from './pages/Users/Overview'
+import Leaderboard from './pages/Users/Leaderboard'
 
 export default function App() {
   return (
@@ -27,6 +29,8 @@ export default function App() {
             <Route path='/projects' element={<Projects />} />
             <Route path='/connections' element={<Connections />} />
             <Route path='/my-profile' element={<MyProfile />} />
+            <Route path='/overview' element={<Overview />} />
+            <Route path='/leaderboard' element={<Leaderboard />} />
             <Route path='*' element={<UserProfile />} />
           </Routes>
           <FooterOfPage />
