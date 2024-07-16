@@ -15,6 +15,88 @@ export default function Sidebar() {
         return location.pathname === page ? 'nav-link pointer active' : 'nav-link pointer';
     }
 
+    const getClassLinkForUserDashboard = () => {
+        if (['/default'].includes(location.pathname)) {
+            return 'nav-link dropdown-toggle active';
+        } else {
+            return 'nav-link dropdown-toggle';
+        }
+    };
+    const getCollapseClassForUserDashboard = () => {
+        return ['/default'].some(page => location.pathname.includes(page))
+            ? 'nav-collapse collapse show'
+            : 'nav-collapse collapse';
+    };
+
+    const getClassLinkForUsers = () => {
+        if (['/overview', '/leaderboard', '/add-user'].includes(location.pathname)) {
+            return 'nav-link dropdown-toggle active';
+        } else {
+            return 'nav-link dropdown-toggle';
+        }
+    };
+    const getCollapseClassForUsers = () => {
+        return ['overview', 'leaderboard', 'add-user'].some(page => location.pathname.includes(page))
+            ? 'nav-collapse collapse show'
+            : 'nav-collapse collapse';
+    };
+
+    const getClassLinkForUserProfile = () => {
+        if (['/profile', '/team', '/projects', '/connections'].includes(location.pathname)) {
+            return 'nav-link dropdown-toggle active';
+        } else {
+            return 'nav-link dropdown-toggle';
+        }
+    };
+    const getCollapseClassForUserProfile = () => {
+        return ['profile', 'team', 'projects', 'connections'].some(page => location.pathname.includes(page))
+            ? 'nav-collapse collapse show'
+            : 'nav-collapse collapse';
+    };
+
+    const getClassLinkForAccounts = () => {
+        if (['/account-settings', '/account-billing', '/account-invoice'].includes(location.pathname)) {
+            return 'nav-link dropdown-toggle active';
+        } else {
+            return 'nav-link dropdown-toggle';
+        }
+    };
+    const getCollapseClassForAccounts = () => {
+        return ['account-settings', 'account-billing', 'account-invoice'].some(page => location.pathname.includes(page))
+            ? 'nav-collapse collapse show'
+            : 'nav-collapse collapse';
+    };
+
+    const getClassLinkForProjects = () => {
+        if (['/projects-overview', '/projects-timeline'].includes(location.pathname)) {
+            return 'nav-link dropdown-toggle active';
+        } else {
+            return 'nav-link dropdown-toggle';
+        }
+    };
+    const getCollapseClassForProjects = () => {
+        return ['projects-overview', 'projects-timeline'].some(page => location.pathname.includes(page))
+            ? 'nav-collapse collapse show'
+            : 'nav-collapse collapse';
+    };
+
+    const getClassLinkForProject = () => {
+        if (['/project-overview', '/project-files', '/project-activity', '/project-setting'].includes(location.pathname)) {
+            return 'nav-link dropdown-toggle active';
+        } else {
+            return 'nav-link dropdown-toggle';
+        }
+    };
+    const getCollapseClassForProject = () => {
+        return ['project-overview', 'project-files', 'project-activity', 'project-setting'].some(page => location.pathname.includes(page))
+            ? 'nav-collapse collapse show'
+            : 'nav-collapse collapse';
+    };
+
+    const isAriaExpanded = (pages) => {
+        return pages.some(page => location.pathname.includes(page)) ? 'true' : 'false';
+    };
+
     return (
         <aside className={`${isExpanded ? 'navbar-verticle-width16' : 'navbar-verticle-width6'} hide-nav-mobile js-navbar-vertical-aside navbar navbar-vertical-aside navbar-vertical navbar-expand-xl navbar-bordered bg-white`}>
             <div className="navbar-vertical-container">
@@ -41,11 +123,11 @@ export default function Sidebar() {
                         <div id="navbarVerticalMenu" className="nav nav-pills nav-vertical card-navbar-nav">
                             {/* Collapse */}
                             <div className="nav-item">
-                                <a className="nav-link dropdown-toggle " href="#navbarVerticalMenuDashboards" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuDashboards" aria-expanded="false" aria-controls="navbarVerticalMenuDashboards">
+                                <a className={getClassLinkForUserDashboard()} href="#navbarVerticalMenuDashboards" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuDashboards" aria-expanded={isAriaExpanded(['/default'])} aria-controls="navbarVerticalMenuDashboards">
                                     <i className="bi-house-door nav-icon" />
                                     <span className="nav-link-title">Dashboards</span>
                                 </a>
-                                <div id="navbarVerticalMenuDashboards" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenu">
+                                <div id="navbarVerticalMenuDashboards" className={getCollapseClassForUserDashboard()} data-bs-parent="#navbarVerticalMenu">
                                     <a className="nav-link " href="./">Default</a>
                                     <a className="nav-link " href="./dashboard-alternative.html">Alternative</a>
                                 </div>
@@ -59,11 +141,11 @@ export default function Sidebar() {
                             <div id="navbarVerticalMenuPagesMenu">
                                 {/* Collapse */}
                                 <div className="nav-item">
-                                    <a className="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesUsersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesUsersMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesUsersMenu">
+                                    <a className={getClassLinkForUsers()} href="#navbarVerticalMenuPagesUsersMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesUsersMenu" aria-expanded={isAriaExpanded(['overview', 'leaderboard', 'add-user'])} aria-controls="navbarVerticalMenuPagesUsersMenu">
                                         <i className="bi-people nav-icon" />
                                         <span className="nav-link-title">Users</span>
                                     </a>
-                                    <div id="navbarVerticalMenuPagesUsersMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                    <div id="navbarVerticalMenuPagesUsersMenu" className={getCollapseClassForUsers()} data-bs-parent="#navbarVerticalMenuPagesMenu">
                                         <a className={getNavLinkClass('/overview')} href='/overview' >Overview</a>
                                         <a className={getNavLinkClass('/leaderboard')} onClick={() => { goToPage('/leaderboard') }}>Leaderboard</a>
                                         <a className={getNavLinkClass('/add-user')} href='/add-user' >Add User <span className="badge bg-info rounded-pill ms-1">Hot</span></a>
@@ -72,11 +154,11 @@ export default function Sidebar() {
                                 {/* End Collapse */}
                                 {/* Collapse */}
                                 <div className="nav-item">
-                                    <a className="nav-link dropdown-toggle active" href="#navbarVerticalMenuPagesUserProfileMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesUserProfileMenu" aria-expanded="true" aria-controls="navbarVerticalMenuPagesUserProfileMenu">
+                                    <a className={getClassLinkForUserProfile()} href="#navbarVerticalMenuPagesUserProfileMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesUserProfileMenu" aria-expanded={isAriaExpanded(['user-profile', 'teams', 'projects', 'connections', 'my-profile'])} aria-controls="navbarVerticalMenuPagesUserProfileMenu">
                                         <i className="bi-person nav-icon" />
                                         <span className="nav-link-title">User Profile <span className="badge bg-primary rounded-pill ms-1">5</span></span>
                                     </a>
-                                    <div id="navbarVerticalMenuPagesUserProfileMenu" className="nav-collapse collapse show" data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                    <div id="navbarVerticalMenuPagesUserProfileMenu" className={getCollapseClassForUserProfile()} data-bs-parent="#navbarVerticalMenuPagesMenu">
                                         <a className={getNavLinkClass('/profile')} onClick={() => { goToPage('/profile') }} >Profile</a>
                                         <a className={getNavLinkClass('/teams')} onClick={() => { goToPage('/teams') }} >Teams</a>
                                         <a className={getNavLinkClass('/projects')} onClick={() => { goToPage('/projects') }} >Projects</a>
@@ -87,14 +169,14 @@ export default function Sidebar() {
                                 {/* End Collapse */}
                                 {/* Collapse */}
                                 <div className="nav-item">
-                                    <a className="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesAccountMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesAccountMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesAccountMenu">
+                                    <a className={getClassLinkForAccounts()} href="#navbarVerticalMenuPagesAccountMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesAccountMenu" aria-expanded={isAriaExpanded(['account-settings', 'account-billing', 'account-invoice'])} aria-controls="navbarVerticalMenuPagesAccountMenu">
                                         <i className="bi-person-badge nav-icon" />
                                         <span className="nav-link-title">Account</span>
                                     </a>
-                                    <div id="navbarVerticalMenuPagesAccountMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className="nav-link " href="./account-settings.html">Settings</a>
-                                        <a className="nav-link " href="./account-billing.html">Billing</a>
-                                        <a className="nav-link " href="./account-invoice.html">Invoice</a>
+                                    <div id="navbarVerticalMenuPagesAccountMenu" className={getCollapseClassForAccounts()} data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                        <a className={getNavLinkClass('/account-settings')} href='/account-settings' >Settings</a>
+                                        <a className={getNavLinkClass('/account-billing')} href='/account-billing' >Billing</a>
+                                        <a className={getNavLinkClass('/account-invoice')} href='/account-invoice'>Invoice</a>
                                     </div>
                                 </div>
                                 {/* End Collapse */}
@@ -151,23 +233,23 @@ export default function Sidebar() {
                                 {/* End Collapse */}
                                 {/* Collapse */}
                                 <div className="nav-item">
-                                    <a className="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesProjectsMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectsMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesProjectsMenu">
+                                    <a className={getClassLinkForProjects()} href="#navbarVerticalMenuPagesProjectsMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectsMenu" aria-expanded={isAriaExpanded(['/projects-overview', '/projects-timeline'])} aria-controls="navbarVerticalMenuPagesProjectsMenu">
                                         <i className="bi-stickies nav-icon" />
                                         <span className="nav-link-title">Projects</span>
                                     </a>
-                                    <div id="navbarVerticalMenuPagesProjectsMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className={getNavLinkClass('/my-profile')} href="./project-overview">Overview</a>
-                                        <a className="nav-link " href="./projects-timeline.html">Timeline</a>
+                                    <div id="navbarVerticalMenuPagesProjectsMenu" className={getCollapseClassForProjects()} data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                        <a className={getNavLinkClass('/projects-overview')} href="/projects-overview" >Overview</a>
+                                        <a className={getNavLinkClass('/projects-timeline')} href="/projects-timeline" >Timeline</a>
                                     </div>
                                 </div>
                                 {/* End Collapse */}
                                 {/* Collapse */}
                                 <div className="nav-item">
-                                    <a className="nav-link dropdown-toggle " href="#navbarVerticalMenuPagesProjectMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectMenu" aria-expanded="false" aria-controls="navbarVerticalMenuPagesProjectMenu">
+                                    <a className={getClassLinkForProject()} href="#navbarVerticalMenuPagesProjectMenu" role="button" data-bs-toggle="collapse" data-bs-target="#navbarVerticalMenuPagesProjectMenu" aria-expanded={isAriaExpanded(['project-overview', 'project-files', 'project-activity', 'project-setting'])} aria-controls="navbarVerticalMenuPagesProjectMenu">
                                         <i className="bi-briefcase nav-icon" />
                                         <span className="nav-link-title">Project</span>
                                     </a>
-                                    <div id="navbarVerticalMenuPagesProjectMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
+                                    <div id="navbarVerticalMenuPagesProjectMenu" className={getCollapseClassForProject()} data-bs-parent="#navbarVerticalMenuPagesMenu">
                                         <a className={getNavLinkClass('/project-overview')} href="/project-overview" >Overview</a>
                                         <a className={getNavLinkClass('/project-files')} onClick={() => { goToPage('/project-files') }} >Files</a>
                                         <a className={getNavLinkClass('/project-activity')} onClick={() => { goToPage('/project-activity') }}>Activity</a>

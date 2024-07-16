@@ -21,6 +21,11 @@ import ProjectFiles from './pages/Project/ProjectFiles'
 import ProjectActivity from './pages/Project/ProjectActivity'
 import ProjectTeams from './pages/Project/ProjectTeams'
 import ProjectSetting from './pages/Project/ProjectSetting'
+import Settings from './pages/Account/Settings'
+import Billing from './pages/Account/Billing'
+import Invoice from './pages/Account/Invoice'
+import ProjectsOverview from './pages/projects/ProjectsOverview'
+import Timeline from './pages/projects/Timeline'
 
 export default function App() {
   return (
@@ -39,11 +44,16 @@ export default function App() {
             <Route path='/projects' element={<Projects />} />
             <Route path='/connections' element={<Connections />} />
             <Route path='/my-profile' element={<MyProfile />} />
+            <Route path='/projects-overview' element={<ProjectsOverview />} />
+            <Route path='/projects-timeline' element={<Timeline />} />
             <Route path='/project-overview' element={<ProjectOverview />} />
             <Route path='/project-files' element={<ProjectFiles />} />
             <Route path='/project-activity' element={<ProjectActivity />} />
             <Route path='/project-teams' element={<ProjectTeams />} />
             <Route path='/project-setting' element={<ProjectSetting />} />
+            <Route path='/account-settings' element={<Settings />} />
+            <Route path='/account-billing' element={<Billing />} />
+            <Route path='/account-invoice' element={<Invoice />} />
             <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />
