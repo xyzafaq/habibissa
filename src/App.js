@@ -26,6 +26,7 @@ import Billing from './pages/Account/Billing'
 import Invoice from './pages/Account/Invoice'
 import ProjectsOverview from './pages/projects/ProjectsOverview'
 import Timeline from './pages/projects/Timeline'
+import EcomOverview from './pages/Ecommerce/EcomOverview'
 
 export default function App() {
   return (
@@ -54,6 +55,7 @@ export default function App() {
             <Route path='/account-settings' element={<Settings />} />
             <Route path='/account-billing' element={<Billing />} />
             <Route path='/account-invoice' element={<Invoice />} />
+            <Route path='/ecommerce' element={<EcomOverview />} />
             <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />
