@@ -32,6 +32,9 @@ import EcommerceProductsDetails from './pages/Ecommerce/Products/EcommerceProduc
 import EcommerceAddProduct from './pages/Ecommerce/Products/EcommerceAddProduct'
 import Orders from './pages/Ecommerce/Orders/Orders'
 import OrderDetails from './pages/Ecommerce/Orders/OrderDetails'
+import Customer from './pages/Ecommerce/Customer/Customer'
+import CustomerDetails from './pages/Ecommerce/Customer/CustomerDetails'
+import AddCustomer from './pages/Ecommerce/Customer/AddCustomer'
 
 export default function App() {
   return (
@@ -66,6 +69,9 @@ export default function App() {
             <Route path='/ecommerce-add-product' element={<EcommerceAddProduct />} />
             <Route path='/ecommerce-orders' element={<Orders />} />
             <Route path='/ecommerce-order-details' element={<OrderDetails />} />
+            <Route path='/ecommerce-customer' element={<Customer />} />
+            <Route path='/ecommerce-customer-details' element={<CustomerDetails />} />
+            <Route path='/ecommerce-add-customer' element={<AddCustomer />} />
             <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />

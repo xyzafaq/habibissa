@@ -170,13 +170,14 @@
   <script src="%PUBLIC_URL%/assets/vendor/hs-scrollspy/dist/hs-scrollspy.min.js"></script>
   <script src="./assets/vendor/hs-toggle-switch/dist/hs-toggle-switch.min.js"></script>
 
-  <script src="./assets/vendor/hs-quantity-counter/dist/hs-quantity-counter.min.js"></script>
-  <script src="./assets/vendor/fslightbox/index.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/hs-quantity-counter/dist/hs-quantity-counter.min.js"></script>
+  <script src="%PUBLIC_URL%/assets/vendor/fslightbox/index.js"></script>
 
 
   <script src="%PUBLIC_URL%/assets/vendor/jsvectormap/dist/js/jsvectormap.min.js"></script>
   <script src="%PUBLIC_URL%/assets/vendor/jsvectormap/dist/maps/world.js"></script>
 
+  <!-- <script src="%PUBLIC_URL%/assets/vendor/leaflet/dist/leaflet.js"></script> -->
 
   <!-- Projects Overview -->
   <script src="%PUBLIC_URL%/assets/vendor/dropzone/dist/min/dropzone.min.js"></script>
@@ -2304,54 +2305,54 @@
 
   <!-- JS Plugins Init. -->
   <script>
-    (function () {
-      window.onload = function () {
+      (function () {
+        window.onload = function () {
 
 
-        // INITIALIZATION OF NAVBAR VERTICAL ASIDE
-        // =======================================================
-        new HSSideNav('.js-navbar-vertical-aside').init()
+          // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+          // =======================================================
+          new HSSideNav('.js-navbar-vertical-aside').init()
 
 
-        // INITIALIZATION OF FORM SEARCH
-        // =======================================================
-        new HSFormSearch('.js-form-search')
+          // INITIALIZATION OF FORM SEARCH
+          // =======================================================
+          new HSFormSearch('.js-form-search')
 
 
-        // INITIALIZATION OF BOOTSTRAP DROPDOWN
-        // =======================================================
-        HSBsDropdown.init()
+          // INITIALIZATION OF BOOTSTRAP DROPDOWN
+          // =======================================================
+          HSBsDropdown.init()
 
 
-        // INITIALIZATION OF SELECT
-        // =======================================================
-        HSCore.components.HSTomSelect.init('.js-select')
+          // INITIALIZATION OF SELECT
+          // =======================================================
+          HSCore.components.HSTomSelect.init('.js-select')
 
 
-        // INITIALIZATION OF ADD FIELD
-        // =======================================================
-        new HSAddField('.js-add-field', {
-          addedField: field => {
-            new HSQuantityCounter(field.querySelector('.js-quantity-counter-dynamic'))
-          }
-        })
+          // INITIALIZATION OF ADD FIELD
+          // =======================================================
+          new HSAddField('.js-add-field', {
+            addedField: field => {
+              new HSQuantityCounter(field.querySelector('.js-quantity-counter-dynamic'))
+            }
+          })
 
 
-        // INITIALIZATION OF  QUANTITY COUNTER
-        // =======================================================
-        new HSQuantityCounter('.js-quantity-counter-input')
+          // INITIALIZATION OF  QUANTITY COUNTER
+          // =======================================================
+          new HSQuantityCounter('.js-quantity-counter-input')
 
 
-        // INITIALIZATION OF DROPZONE
-        // =======================================================
-        HSCore.components.HSDropzone.init('.js-dropzone')
+          // INITIALIZATION OF DROPZONE
+          // =======================================================
+          HSCore.components.HSDropzone.init('.js-dropzone')
 
 
-        // INITIALIZATION OF QUILLJS EDITOR
-        // =======================================================
-        HSCore.components.HSQuill.init('.js-quill')
-      }
-    })()
+          // INITIALIZATION OF QUILLJS EDITOR
+          // =======================================================
+          HSCore.components.HSQuill.init('.js-quill')
+        }
+      })()
   </script>
 
   <!-- Style Switcher JS -->
@@ -2394,54 +2395,54 @@
 
   <!-- JS Plugins Init. -->
   <script>
-    (function () {
-      window.onload = function () {
+      (function () {
+        window.onload = function () {
 
 
-        // INITIALIZATION OF NAVBAR VERTICAL ASIDE
-        // =======================================================
-        new HSSideNav('.js-navbar-vertical-aside').init()
+          // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+          // =======================================================
+          new HSSideNav('.js-navbar-vertical-aside').init()
 
 
-        // INITIALIZATION OF FORM SEARCH
-        // =======================================================
-        new HSFormSearch('.js-form-search')
+          // INITIALIZATION OF FORM SEARCH
+          // =======================================================
+          new HSFormSearch('.js-form-search')
 
 
-        // INITIALIZATION OF BOOTSTRAP DROPDOWN
-        // =======================================================
-        HSBsDropdown.init()
+          // INITIALIZATION OF BOOTSTRAP DROPDOWN
+          // =======================================================
+          HSBsDropdown.init()
 
 
-        // INITIALIZATION OF SELECT
-        // =======================================================
-        HSCore.components.HSTomSelect.init('.js-select')
+          // INITIALIZATION OF SELECT
+          // =======================================================
+          HSCore.components.HSTomSelect.init('.js-select')
 
 
-        // INITIALIZATION OF ADD FIELD
-        // =======================================================
-        new HSAddField('.js-add-field', {
-          addedField: field => {
-            HSCore.components.HSTomSelect.init(field.querySelector('.js-select-dynamic'))
-          }
-        })
+          // INITIALIZATION OF ADD FIELD
+          // =======================================================
+          new HSAddField('.js-add-field', {
+            addedField: field => {
+              HSCore.components.HSTomSelect.init(field.querySelector('.js-select-dynamic'))
+            }
+          })
 
 
-        // INITIALIZATION OF  QUANTITY COUNTER
-        // =======================================================
-        new HSQuantityCounter('.js-quantity-counter')
+          // INITIALIZATION OF  QUANTITY COUNTER
+          // =======================================================
+          new HSQuantityCounter('.js-quantity-counter')
 
 
-        // INITIALIZATION OF DROPZONE
-        // =======================================================
-        HSCore.components.HSDropzone.init('.js-dropzone')
+          // INITIALIZATION OF DROPZONE
+          // =======================================================
+          HSCore.components.HSDropzone.init('.js-dropzone')
 
 
-        // INITIALIZATION OF QUILLJS EDITOR
-        // =======================================================
-        HSCore.components.HSQuill.init('.js-quill')
-      }
-    })()
+          // INITIALIZATION OF QUILLJS EDITOR
+          // =======================================================
+          HSCore.components.HSQuill.init('.js-quill')
+        }
+      })()
   </script>
 
   <!-- Style Switcher JS -->
@@ -2484,35 +2485,35 @@
 
   <!-- JS Plugins Init. -->
   <script>
-    (function () {
-      window.onload = function () {
+      (function () {
+        window.onload = function () {
 
 
-        // INITIALIZATION OF NAVBAR VERTICAL ASIDE
-        // =======================================================
-        new HSSideNav('.js-navbar-vertical-aside').init()
+          // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+          // =======================================================
+          new HSSideNav('.js-navbar-vertical-aside').init()
 
 
-        // INITIALIZATION OF FORM SEARCH
-        // =======================================================
-        new HSFormSearch('.js-form-search')
+          // INITIALIZATION OF FORM SEARCH
+          // =======================================================
+          new HSFormSearch('.js-form-search')
 
 
-        // INITIALIZATION OF BOOTSTRAP DROPDOWN
-        // =======================================================
-        HSBsDropdown.init()
+          // INITIALIZATION OF BOOTSTRAP DROPDOWN
+          // =======================================================
+          HSBsDropdown.init()
 
 
-        // INITIALIZATION OF SELECT
-        // =======================================================
-        HSCore.components.HSTomSelect.init('.js-select')
+          // INITIALIZATION OF SELECT
+          // =======================================================
+          HSCore.components.HSTomSelect.init('.js-select')
 
 
-        // INITIALIZATION OF NAV SCROLLER
-        // =======================================================
-        new HsNavScroller('.js-nav-scroller')
-      }
-    })()
+          // INITIALIZATION OF NAV SCROLLER
+          // =======================================================
+          new HsNavScroller('.js-nav-scroller')
+        }
+      })()
   </script>
 
   <!-- Style Switcher JS -->
@@ -2553,6 +2554,176 @@
       })()
   </script>
 
+  <script>
+      (function () {
+        window.onload = function () {
+
+
+          // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+          // =======================================================
+          new HSSideNav('.js-navbar-vertical-aside').init()
+
+
+          // INITIALIZATION OF FORM SEARCH
+          // =======================================================
+          new HSFormSearch('.js-form-search')
+
+
+          // INITIALIZATION OF BOOTSTRAP DROPDOWN
+          // =======================================================
+          HSBsDropdown.init()
+
+
+          // INITIALIZATION OF SELECT
+          // =======================================================
+          HSCore.components.HSTomSelect.init('.js-select')
+
+
+          // INITIALIZATION OF NAV SCROLLER
+          // =======================================================
+          new HsNavScroller('.js-nav-scroller')
+
+
+          // INITIALIZATION OF MODAL ON PAGE LOAD
+          // =======================================================
+          new bootstrap.Modal(document.getElementById('exportCustomersGuideModal')).show()
+
+
+          // INITIALIZATION OF DROPZONE
+          // =======================================================
+          HSCore.components.HSDropzone.init('.js-dropzone')
+        }
+      })()
+  </script>
+
+  <!-- Style Switcher JS -->
+
+  <script>
+      (function () {
+        // STYLE SWITCHER
+        // =======================================================
+        const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
+        const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
+
+        // Function to set active style in the dorpdown menu and set icon for dropdown trigger
+        const setActiveStyle = function () {
+          $variants.forEach($item => {
+            if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
+              $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+              return $item.classList.add('active')
+            }
+
+            $item.classList.remove('active')
+          })
+        }
+
+        // Add a click event to all items of the dropdown to set the style
+        $variants.forEach(function ($item) {
+          $item.addEventListener('click', function () {
+            HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
+          })
+        })
+
+        // Call the setActiveStyle on load page
+        setActiveStyle()
+
+        // Add event listener on change style to call the setActiveStyle function
+        window.addEventListener('on-hs-appearance-change', function () {
+          setActiveStyle()
+        })
+      })()
+  </script>
+
+  <!-- JS Plugins Init. -->
+  <script>
+      (function () {
+        window.onload = function () {
+
+
+          // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+          // =======================================================
+          new HSSideNav('.js-navbar-vertical-aside').init()
+
+
+          // INITIALIZATION OF FORM SEARCH
+          // =======================================================
+          new HSFormSearch('.js-form-search')
+
+
+          // INITIALIZATION OF BOOTSTRAP DROPDOWN
+          // =======================================================
+          HSBsDropdown.init()
+
+
+          // INITIALIZATION OF NAV SCROLLER
+          // =======================================================
+          new HsNavScroller('.js-nav-scroller')
+
+
+          // INITIALIZATION OF SELECT
+          // =======================================================
+          HSCore.components.HSTomSelect.init('.js-select')
+
+
+          // INITIALIZATION OF CHARTJS
+          // =======================================================
+          HSCore.components.HSChartJS.init('.js-chart')
+
+
+          // INITIALIZATION OF QUILLJS EDITOR
+          // =======================================================
+          HSCore.components.HSQuill.init('.js-quill')
+          HSCore.components.HSQuill.init('.js-quill-step')
+
+
+          // INITIALIZATION OF LEAFLET
+          // =======================================================
+          // const leaflet = HSCore.components.HSLeaflet.init(document.getElementById('map'))
+
+          // L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw', {
+          //   id: 'mapbox/light-v9'
+          // }).addTo(leaflet)
+        }
+      })()
+  </script>
+
+  <!-- Style Switcher JS -->
+
+  <script>
+      (function () {
+        // STYLE SWITCHER
+        // =======================================================
+        const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
+        const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
+
+        // Function to set active style in the dorpdown menu and set icon for dropdown trigger
+        const setActiveStyle = function () {
+          $variants.forEach($item => {
+            if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
+              $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+              return $item.classList.add('active')
+            }
+
+            $item.classList.remove('active')
+          })
+        }
+
+        // Add a click event to all items of the dropdown to set the style
+        $variants.forEach(function ($item) {
+          $item.addEventListener('click', function () {
+            HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
+          })
+        })
+
+        // Call the setActiveStyle on load page
+        setActiveStyle()
+
+        // Add event listener on change style to call the setActiveStyle function
+        window.addEventListener('on-hs-appearance-change', function () {
+          setActiveStyle()
+        })
+      })()
+  </script>
 </body>
 
 </html>

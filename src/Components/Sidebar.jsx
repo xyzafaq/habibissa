@@ -212,9 +212,9 @@ export default function Sidebar() {
                                                     Customers
                                                 </a>
                                                 <div id="navbarVerticalMenuPagesEcommerceCustomersMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                                                    <a className="nav-link " href="./ecommerce-customers.html">Customers</a>
-                                                    <a className="nav-link " href="./ecommerce-customer-details.html">Customer Details</a>
-                                                    <a className="nav-link " href="./ecommerce-add-customers.html">Add Customers</a>
+                                                    <a className={getNavLinkClass('/ecommerce-customer')} href="/ecommerce-customer" >Customers</a>
+                                                    <a className={getNavLinkClass('/ecommerce-customer-details')} href="/ecommerce-customer-details" >Customer Details</a>
+                                                    <a className={getNavLinkClass('/ecommerce-add-customer')} onClick={() => goToPage('/ecommerce-add-customer')} >Add Customers</a>
                                                 </div>
                                             </div>
                                             {/* End Collapse */}
