@@ -181,7 +181,7 @@ export default function Sidebar() {
                                         <span className="nav-link-title">E-commerce</span>
                                     </a>
                                     <div id="navbarVerticalMenuPagesEcommerceMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenu">
-                                        <a className="nav-link " href="./ecommerce.html">Overview</a>
+                                        <a className={getNavLinkClass('/ecommerce')} href="/ecommerce" >Overview</a>
                                         <div id="navbarVerticalMenuPagesMenuEcommerce">
                                             {/* Collapse */}
                                             <div className="nav-item">
@@ -189,9 +189,9 @@ export default function Sidebar() {
                                                     Products
                                                 </a>
                                                 <div id="navbarVerticalMenuPagesEcommerceProductsMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                                                    <a className="nav-link " href="./ecommerce-products.html">Products</a>
-                                                    <a className="nav-link " href="./ecommerce-product-details.html">Product Details</a>
-                                                    <a className="nav-link " href="./ecommerce-add-product.html">Add Product</a>
+                                                    <a className={getNavLinkClass('/ecommerce-products')} href="/ecommerce-products" >Products</a>
+                                                    <a className={getNavLinkClass('/ecommerce-products-details')} href="/ecommerce-products-details" >Product Details</a>
+                                                    <a className={getNavLinkClass('/ecommerce-add-product')} href="/ecommerce-add-product" >Add Product</a>
                                                 </div>
                                             </div>
                                             {/* End Collapse */}
@@ -201,8 +201,8 @@ export default function Sidebar() {
                                                     Orders
                                                 </a>
                                                 <div id="navbarVerticalMenuPagesEcommerceOrdersMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuPagesMenuEcommerce">
-                                                    <a className="nav-link " href="./ecommerce-orders.html">Orders</a>
-                                                    <a className="nav-link " href="./ecommerce-order-details.html">Order Details</a>
+                                                    <a className={getNavLinkClass('/ecommerce-orders')} href="/ecommerce-orders" >Orders</a>
+                                                    <a className={getNavLinkClass('/ecommerce-order-details')} href="/ecommerce-order-details" >Order Details</a>
                                                 </div>
                                             </div>
                                             {/* End Collapse */}

@@ -27,6 +27,11 @@ import Invoice from './pages/Account/Invoice'
 import ProjectsOverview from './pages/projects/ProjectsOverview'
 import Timeline from './pages/projects/Timeline'
 import EcomOverview from './pages/Ecommerce/EcomOverview'
+import EcommerceProducts from './pages/Ecommerce/Products/EcommerceProducts'
+import EcommerceProductsDetails from './pages/Ecommerce/Products/EcommerceProductsDetails'
+import EcommerceAddProduct from './pages/Ecommerce/Products/EcommerceAddProduct'
+import Orders from './pages/Ecommerce/Orders/Orders'
+import OrderDetails from './pages/Ecommerce/Orders/OrderDetails'
 
 export default function App() {
   return (
@@ -56,6 +61,11 @@ export default function App() {
             <Route path='/account-billing' element={<Billing />} />
             <Route path='/account-invoice' element={<Invoice />} />
             <Route path='/ecommerce' element={<EcomOverview />} />
+            <Route path='/ecommerce-products' element={<EcommerceProducts />} />
+            <Route path='/ecommerce-products-details' element={<EcommerceProductsDetails />} />
+            <Route path='/ecommerce-add-product' element={<EcommerceAddProduct />} />
+            <Route path='/ecommerce-orders' element={<Orders />} />
+            <Route path='/ecommerce-order-details' element={<OrderDetails />} />
             <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />
