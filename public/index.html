@@ -2724,6 +2724,221 @@
         })
       })()
   </script>
+
+  <script>
+      (function () {
+        window.onload = function () {
+
+
+          // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+          // =======================================================
+          new HSSideNav('.js-navbar-vertical-aside').init()
+
+
+          // INITIALIZATION OF FORM SEARCH
+          // =======================================================
+          new HSFormSearch('.js-form-search')
+
+
+          // INITIALIZATION OF BOOTSTRAP DROPDOWN
+          // =======================================================
+          HSBsDropdown.init()
+
+
+          // INITIALIZATION OF SELECT
+          // =======================================================
+          HSCore.components.HSTomSelect.init('.js-select')
+
+
+          // INITIALIZATION OF INPUT MASK
+          // =======================================================
+          HSCore.components.HSMask.init('.js-input-mask')
+
+
+          // INITIALIZATION OF STEP FORM
+          // =======================================================
+          new HSStepForm('.js-step-form', {
+            finish: () => {
+              document.getElementById("checkoutStepFormProgress").style.display = 'none'
+              document.getElementById("checkoutStepFormContent").style.display = 'none'
+              document.getElementById("checkoutStepOrderSummary").style.display = 'none'
+              document.getElementById("checkoutStepSuccessMessage").style.display = 'block'
+              const formContainer = document.getElementById('formContainer')
+            },
+            onNextStep: function () {
+              scrollToTop()
+            },
+            onPrevStep: function () {
+              scrollToTop()
+            }
+          })
+
+          function scrollToTop(el = '.js-step-form') {
+            el = document.querySelector(el)
+            window.scrollTo({
+              top: (el.getBoundingClientRect().top + window.scrollY) - 30,
+              left: 0,
+              behavior: 'smooth'
+            })
+          }
+        }
+      })()
+  </script>
+
+  <script>
+      (function () {
+        // STYLE SWITCHER
+        // =======================================================
+        const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
+        const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
+
+        // Function to set active style in the dorpdown menu and set icon for dropdown trigger
+        const setActiveStyle = function () {
+          $variants.forEach($item => {
+            if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
+              $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+              return $item.classList.add('active')
+            }
+
+            $item.classList.remove('active')
+          })
+        }
+
+        // Add a click event to all items of the dropdown to set the style
+        $variants.forEach(function ($item) {
+          $item.addEventListener('click', function () {
+            HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
+          })
+        })
+
+        // Call the setActiveStyle on load page
+        setActiveStyle()
+
+        // Add event listener on change style to call the setActiveStyle function
+        window.addEventListener('on-hs-appearance-change', function () {
+          setActiveStyle()
+        })
+      })()
+  </script>
+
+  <script>
+      (function () {
+        window.onload = function () {
+          // INITIALIZATION OF BOOTSTRAP VALIDATION
+          // =======================================================
+          HSBsValidation.init('.js-validate', {
+            onSubmit: data => {
+              data.event.preventDefault()
+              alert('Submited')
+            }
+          })
+
+
+          // INITIALIZATION OF TOGGLE PASSWORD
+          // =======================================================
+          new HSTogglePassword('.js-toggle-password')
+        }
+      })()
+  </script>
+
+  <script>
+      (function () {
+        window.onload = function () {
+
+
+          // INITIALIZATION OF NAVBAR VERTICAL ASIDE
+          // =======================================================
+          new HSSideNav('.js-navbar-vertical-aside').init()
+
+
+          // INITIALIZATION OF FORM SEARCH
+          // =======================================================
+          new HSFormSearch('.js-form-search')
+
+
+          // INITIALIZATION OF BOOTSTRAP DROPDOWN
+          // =======================================================
+          HSBsDropdown.init()
+
+
+          // INITIALIZATION OF SELECT
+          // =======================================================
+          HSCore.components.HSTomSelect.init('.js-select')
+
+
+          // INITIALIZATION OF INPUT MASK
+          // =======================================================
+          HSCore.components.HSMask.init('.js-input-mask')
+
+
+          // INITIALIZATION OF STEP FORM
+          // =======================================================
+          new HSStepForm('.js-step-form', {
+            finish: () => {
+              document.getElementById("checkoutStepFormProgress").style.display = 'none'
+              document.getElementById("checkoutStepFormContent").style.display = 'none'
+              document.getElementById("checkoutStepOrderSummary").style.display = 'none'
+              document.getElementById("checkoutStepSuccessMessage").style.display = 'block'
+              const formContainer = document.getElementById('formContainer')
+            },
+            onNextStep: function () {
+              scrollToTop()
+            },
+            onPrevStep: function () {
+              scrollToTop()
+            }
+          })
+
+          function scrollToTop(el = '.js-step-form') {
+            el = document.querySelector(el)
+            window.scrollTo({
+              top: (el.getBoundingClientRect().top + window.scrollY) - 30,
+              left: 0,
+              behavior: 'smooth'
+            })
+          }
+        }
+      })()
+  </script>
+
+  <!-- Style Switcher JS -->
+
+  <script>
+      (function () {
+        // STYLE SWITCHER
+        // =======================================================
+        const $dropdownBtn = document.getElementById('selectThemeDropdown') // Dropdowon trigger
+        const $variants = document.querySelectorAll(`[aria-labelledby="selectThemeDropdown"] [data-icon]`) // All items of the dropdown
+
+        // Function to set active style in the dorpdown menu and set icon for dropdown trigger
+        const setActiveStyle = function () {
+          $variants.forEach($item => {
+            if ($item.getAttribute('data-value') === HSThemeAppearance.getOriginalAppearance()) {
+              $dropdownBtn.innerHTML = `<i class="${$item.getAttribute('data-icon')}" />`
+              return $item.classList.add('active')
+            }
+
+            $item.classList.remove('active')
+          })
+        }
+
+        // Add a click event to all items of the dropdown to set the style
+        $variants.forEach(function ($item) {
+          $item.addEventListener('click', function () {
+            HSThemeAppearance.setAppearance($item.getAttribute('data-value'))
+          })
+        })
+
+        // Call the setActiveStyle on load page
+        setActiveStyle()
+
+        // Add event listener on change style to call the setActiveStyle function
+        window.addEventListener('on-hs-appearance-change', function () {
+          setActiveStyle()
+        })
+      })()
+  </script>
+
 </body>
 
 </html>

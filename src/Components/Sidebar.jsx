@@ -219,9 +219,9 @@ export default function Sidebar() {
                                             </div>
                                             {/* End Collapse */}
                                         </div>
-                                        <a className="nav-link " href="./ecommerce-referrals.html">Referrals</a>
-                                        <a className="nav-link " href="./ecommerce-manage-reviews.html">Manage Reviews</a>
-                                        <a className="nav-link " href="./ecommerce-checkout.html">Checkout</a>
+                                        <a className={getNavLinkClass('/ecommerce-referrals')} href="/ecommerce-referrals">Referrals</a>
+                                        <a className={getNavLinkClass('/ecommerce-manage-reviews')} href="/ecommerce-manage-reviews">Manage Reviews</a>
+                                        <a className={getNavLinkClass('/ecommerce-checkout')} href="/ecommerce-checkout">Checkout</a>
                                     </div>
                                 </div>
                                 {/* End Collapse */}
@@ -265,8 +265,8 @@ export default function Sidebar() {
                                                     Log In
                                                 </a>
                                                 <div id="navbarVerticalMenuAuthenticationLoginMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
-                                                    <a className="nav-link " href="./authentication-login-basic.html">Basic</a>
-                                                    <a className="nav-link " href="./authentication-login-cover.html">Cover</a>
+                                                    <a className={getNavLinkClass('/login')} href="/login">Basic</a>
+                                                    {/* <a className="nav-link " href="./authentication-login-cover.html">Cover</a> */}
                                                 </div>
                                             </div>
                                             {/* End Collapse */}
@@ -276,8 +276,8 @@ export default function Sidebar() {
                                                     Sign Up
                                                 </a>
                                                 <div id="navbarVerticalMenuAuthenticationSignupMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
-                                                    <a className="nav-link " href="./authentication-signup-basic.html">Basic</a>
-                                                    <a className="nav-link " href="./authentication-signup-cover.html">Cover</a>
+                                                    <a className={getNavLinkClass('/sign-up')} href="/sign-up">Basic</a>
+                                                    {/* <a className="nav-link " href="./authentication-signup-cover.html">Cover</a> */}
                                                 </div>
                                             </div>
                                             {/* End Collapse */}
@@ -287,8 +287,8 @@ export default function Sidebar() {
                                                     Reset Password
                                                 </a>
                                                 <div id="navbarVerticalMenuAuthenticationResetPasswordMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
-                                                    <a className="nav-link " href="./authentication-reset-password-basic.html">Basic</a>
-                                                    <a className="nav-link " href="./authentication-reset-password-cover.html">Cover</a>
+                                                    <a className={getNavLinkClass('/reset-password')} href="/reset-password">Basic</a>
+                                                    {/* <a className="nav-link " href="./authentication-reset-password-cover.html">Cover</a> */}
                                                 </div>
                                             </div>
                                             {/* End Collapse */}
@@ -298,8 +298,8 @@ export default function Sidebar() {
                                                     Email Verification
                                                 </a>
                                                 <div id="navbarVerticalMenuAuthenticationEmailVerificationMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
-                                                    <a className="nav-link " href="./authentication-email-verification-basic.html">Basic</a>
-                                                    <a className="nav-link " href="./authentication-email-verification-cover.html">Cover</a>
+                                                    <a className={getNavLinkClass('/email-verification')} href="/email-verification">Basic</a>
+                                                    {/* <a className="nav-link " href="./authentication-email-verification-cover.html">Cover</a> */}
                                                 </div>
                                             </div>
                                             {/* End Collapse */}
@@ -309,14 +309,14 @@ export default function Sidebar() {
                                                     2-step Verification
                                                 </a>
                                                 <div id="navbarVerticalMenuAuthentication2StepVerificationMenu" className="nav-collapse collapse " data-bs-parent="#navbarVerticalMenuAuthenticationMenu">
-                                                    <a className="nav-link " href="./authentication-2-step-verification-basic.html">Basic</a>
-                                                    <a className="nav-link " href="./authentication-2-step-verification-cover.html">Cover</a>
+                                                    <a className={getNavLinkClass('/two-step-verification')} href="/two-step-verification" >Basic</a>
+                                                    {/* <a className="nav-link " href="./authentication-2-step-verification-cover.html">Cover</a> */}
                                                 </div>
                                             </div>
                                             {/* End Collapse */}
-                                            <a className="nav-link" href="javascript:;" data-bs-toggle="modal" data-bs-target="#welcomeMessageModal">Welcome Message</a>
-                                            <a className="nav-link " href="./error-404.html">Error 404</a>
-                                            <a className="nav-link " href="./error-500.html">Error 500</a>
+                                            {/* <a className="nav-link" href="javascript:;" data-bs-toggle="modal" data-bs-target="#welcomeMessageModal">Welcome Message</a> */}
+                                            <a className={getNavLinkClass('/error-404')} href="/error-404">Error 404</a>
+                                            <a className={getNavLinkClass('/error-500')} href="/error-500">Error 500</a>
                                         </div>
                                     </div>
                                 </div>

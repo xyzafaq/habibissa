@@ -35,6 +35,16 @@ import OrderDetails from './pages/Ecommerce/Orders/OrderDetails'
 import Customer from './pages/Ecommerce/Customer/Customer'
 import CustomerDetails from './pages/Ecommerce/Customer/CustomerDetails'
 import AddCustomer from './pages/Ecommerce/Customer/AddCustomer'
+import EcommRefferal from './pages/Ecommerce/EcommRefferal'
+import EcomManageReviews from './pages/Ecommerce/EcomManageReviews'
+import EcommCheckout from './pages/Ecommerce/EcommCheckout'
+import SignIn from './pages/Authentication/SignIn'
+import SignUp from './pages/Authentication/SignUp'
+import ResetPassword from './pages/Authentication/ResetPassword'
+import EmailVerification from './pages/Authentication/EmailVerification'
+import TwostepVerification from './pages/Authentication/TwostepVerification'
+import Error404 from './pages/Authentication/Error404'
+import Error500 from './pages/Authentication/Error500'
 
 export default function App() {
   return (
@@ -72,6 +82,17 @@ export default function App() {
             <Route path='/ecommerce-customer' element={<Customer />} />
             <Route path='/ecommerce-customer-details' element={<CustomerDetails />} />
             <Route path='/ecommerce-add-customer' element={<AddCustomer />} />
+            <Route path='/ecommerce-referrals' element={<EcommRefferal />} />
+            <Route path='/ecommerce-manage-reviews' element={<EcomManageReviews />} />
+            <Route path='/ecommerce-checkout' element={<EcommCheckout />} />
+            <Route path='/login' element={<SignIn />} />
+            <Route path='/sign-up' element={<SignUp />} />
+            <Route path='/reset-password' element={<ResetPassword />} />
+            <Route path='/email-verification' element={<EmailVerification />} />
+            <Route path='/two-step-verification' element={<TwostepVerification />} />
+            <Route path='/error-404' element={<Error404 />} />
+            <Route path='/error-500' element={<Error500 />} />
+
             <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />
