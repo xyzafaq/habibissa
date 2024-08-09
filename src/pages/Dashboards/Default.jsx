@@ -1,4 +1,49 @@
 import React from 'react'
+import { ChartContainer } from '@mui/x-charts/ChartContainer';
+import {
+    LinePlot,
+    MarkPlot,
+    lineElementClasses,
+    markElementClasses,
+} from '@mui/x-charts/LineChart';
+
+const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
+const xLabels = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+function TinyLineChart() {
+    return (
+        <ChartContainer
+            width={500}
+            height={300}
+            series={[{ type: 'line', data: pData }]}
+            xAxis={[{ scaleType: 'point', data: xLabels }]}
+            sx={{
+                [`& .${lineElementClasses.root}`]: {
+                    stroke: '#8884d8',
+                    strokeWidth: 2,
+                },
+                [`& .${markElementClasses.root}`]: {
+                    stroke: '#8884d8',
+                    scale: '0.6',
+                    fill: '#fff',
+                    strokeWidth: 2,
+                },
+            }}
+            disableAxisListener
+        >
+            <LinePlot />
+            <MarkPlot />
+        </ChartContainer>
+    );
+}
 
 export default function Default() {
     return (
@@ -36,7 +81,7 @@ export default function Default() {
                                     <div className="col-6">
                                         {/* Chart */}
                                         <div className="chartjs-custom" style={{ height: '3rem' }}>
-                                            <canvas className="js-chart" data-hs-chartjs-options="{
+                                            {/* <canvas className="js-chart" data-hs-chartjs-options="{
                                 &quot;type&quot;: &quot;line&quot;,
                                 &quot;data&quot;: {
                                    &quot;labels&quot;: [&quot;1 May&quot;,&quot;2 May&quot;,&quot;3 May&quot;,&quot;4 May&quot;,&quot;5 May&quot;,&quot;6 May&quot;,&quot;7 May&quot;,&quot;8 May&quot;,&quot;9 May&quot;,&quot;10 May&quot;,&quot;11 May&quot;,&quot;12 May&quot;,&quot;13 May&quot;,&quot;14 May&quot;,&quot;15 May&quot;,&quot;16 May&quot;,&quot;17 May&quot;,&quot;18 May&quot;,&quot;19 May&quot;,&quot;20 May&quot;,&quot;21 May&quot;,&quot;22 May&quot;,&quot;23 May&quot;,&quot;24 May&quot;,&quot;25 May&quot;,&quot;26 May&quot;,&quot;27 May&quot;,&quot;28 May&quot;,&quot;29 May&quot;,&quot;30 May&quot;,&quot;31 May&quot;],
@@ -71,7 +116,8 @@ export default function Default() {
                                   }
                                 }
                               }">
-                                            </canvas>
+                                            </canvas> */}
+                                            <TinyLineChart />
                                         </div>
                                         {/* End Chart */}
                                     </div>
