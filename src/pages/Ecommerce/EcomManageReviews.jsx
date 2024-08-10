@@ -32,7 +32,7 @@ export default function EcomManageReviews() {
                                 <div className="d-flex align-items-center">
                                     <div className="flex-shrink-0">
                                         <img className="avatar avatar-xl avatar-4x3" src="./assets/svg/illustrations/oc-review.svg" alt="Image Description" data-hs-theme-appearance="default" />
-                                        <img className="avatar avatar-xl avatar-4x3" src="./assets/svg/illustrations-light/oc-review.svg" alt="Image Description" data-hs-theme-appearance="dark" />
+                                        {/* <img className="avatar avatar-xl avatar-4x3" src="./assets/svg/illustrations-light/oc-review.svg" alt="Image Description" data-hs-theme-appearance="dark" /> */}
                                     </div>
                                     <div className="flex-grow-1 ms-5">
                                         <h4 className="display-3 text-dark mb-0">4.84</h4>

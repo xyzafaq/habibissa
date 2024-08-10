@@ -1,4 +1,52 @@
 import React from 'react'
+import Box from '@mui/material/Box';
+import { ResponsiveChartContainer } from '@mui/x-charts/ResponsiveChartContainer';
+import { LinePlot } from '@mui/x-charts/LineChart';
+
+import { ChartsXAxis } from '@mui/x-charts/ChartsXAxis';
+import { ChartsYAxis } from '@mui/x-charts/ChartsYAxis';
+
+const timeData = [
+  new Date(2023, 7, 31, 1),   // 1 AM
+  new Date(2023, 7, 31, 2),   // 2 AM
+  new Date(2023, 7, 31, 3),   // 3 AM
+  new Date(2023, 7, 31, 4),   // 4 AM
+];
+
+const y1 = [8, 12, 5, 8];
+const y2 = [5, 12, 16, 10];
+
+const config = {
+  series: [
+    { type: 'line', data: y1, color:'#377dff' },
+    { type: 'line', data: y2, color: '#c0c0c0' },
+  ],
+  height: 200,
+  xAxis: [
+    {
+      data: timeData,
+      scaleType: 'time',
+      valueFormatter: (date) =>
+        date.toLocaleTimeString('en-US', {
+          hour: 'numeric',
+          hour12: true,
+        }), // Formatting X-axis labels as "1 AM", "2 AM", etc.
+    },
+  ],
+};
+
+function ActivityGraph() {
+  return (
+    <Box sx={{ width: '100%', maxWidth: 600 }}>
+      <ResponsiveChartContainer {...config}>
+        <LinePlot />
+        {/* <ChartsXAxis /> */}
+        <ChartsYAxis />
+      </ResponsiveChartContainer>
+    </Box>
+  );
+}
+
 
 export default function CustomerDetails() {
     return (
@@ -764,74 +812,8 @@ export default function CustomerDetails() {
                             <div className="card-body">
                                 <p>Website activity shows you how many times a contact has visited your site and viewed your pages.</p>
                                 {/* Bar Chart */}
-                                <div className="chartjs-custom my-5" style={{ height: '12rem' }}>
-                                    <canvas id="ecommerce-customer-details" className="js-chart" data-hs-chartjs-options="{
-                          &quot;type&quot;: &quot;line&quot;,
-                          &quot;data&quot;: {
-                             &quot;labels&quot;: [&quot;Aug 1&quot;, &quot;Aug 2&quot;, &quot;Aug 3&quot;, &quot;Aug 4&quot;, &quot;Aug 5&quot;],
-                             &quot;datasets&quot;: [{
-                              &quot;data&quot;: [10, 9, 14, 5, 10],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#377dff&quot;,
-                              &quot;borderWidth&quot;: 3,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            },
-                            {
-                              &quot;data&quot;: [15, 13, 18, 7, 26],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;borderWidth&quot;: 3,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            }]
-                          },
-                          &quot;options&quot;: {
-                             &quot;scales&quot;: {
-                                &quot;y&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                    &quot;drawBorder&quot;: false,
-                                    &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;stepSize&quot;: 10,
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 10
-                                  }
-                                },
-                                &quot;x&quot;: {
-                                  &quot;display&quot;: false
-                                }
-                            },
-                            &quot;plugins&quot;: {
-                              &quot;tooltip&quot;: {
-                                &quot;hasIndicator&quot;: true,
-                                &quot;mode&quot;: &quot;index&quot;,
-                                &quot;intersect&quot;: false,
-                                &quot;lineMode&quot;: true,
-                                &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
-                              }
-                            },
-                            &quot;hover&quot;: {
-                              &quot;mode&quot;: &quot;nearest&quot;,
-                              &quot;intersect&quot;: true
-                            }
-                          }
-                        }">
-                                    </canvas>
+                                <div className="chartjs-custom my-5 flex chartsvg" style={{ height: '12rem' }}>
+                                    <ActivityGraph />
                                 </div>
                                 {/* End Bar Chart */}
                                 <div className="row justify-content-center">

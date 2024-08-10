@@ -1,5 +1,9 @@
 import React from 'react'
 import Header from './Component/Header'
+import { Gauge } from '@mui/x-charts/Gauge';
+import SalesGraph from './Component/SalesGraph';
+import MyPieChart from './Component/PieChart';
+import HoursSpentChart from './Component/HoursSpentChart';
 
 export default function ProjectOverview() {
     return (
@@ -144,19 +148,7 @@ export default function ProjectOverview() {
                                     <div className="col-auto">
                                         {/* Circle */}
                                         <div className="circles-chart">
-                                            <div className="js-circle" data-hs-circles-options="{
-                             &quot;value&quot;: 54,
-                             &quot;maxValue&quot;: 100,
-                             &quot;duration&quot;: 2000,
-                             &quot;isViewportInit&quot;: true,
-                             &quot;radius&quot;: 25,
-                             &quot;width&quot;: 3,
-                             &quot;fgStrokeLinecap&quot;: &quot;round&quot;,
-                             &quot;textFontSize&quot;: 14,
-                             &quot;additionalText&quot;: &quot;%&quot;,
-                             &quot;textClass&quot;: &quot;circles-chart-content&quot;,
-                             &quot;textColor&quot;: &quot;#377dff&quot;
-                           }" />
+                                            <Gauge width={80} height={80} value={50} />
                                         </div>
                                         {/* End Circle */}
                                     </div>
@@ -191,19 +183,7 @@ export default function ProjectOverview() {
                                     <div className="col-auto">
                                         {/* Circle */}
                                         <div className="circles-chart">
-                                            <div className="js-circle" data-hs-circles-options="{
-                             &quot;value&quot;: 80,
-                             &quot;maxValue&quot;: 100,
-                             &quot;duration&quot;: 2000,
-                             &quot;isViewportInit&quot;: true,
-                             &quot;radius&quot;: 25,
-                             &quot;width&quot;: 3,
-                             &quot;fgStrokeLinecap&quot;: &quot;round&quot;,
-                             &quot;textFontSize&quot;: 14,
-                             &quot;additionalText&quot;: &quot;%&quot;,
-                             &quot;textClass&quot;: &quot;circles-chart-content&quot;,
-                             &quot;textColor&quot;: &quot;#377dff&quot;
-                           }" />
+                                        <Gauge width={80} height={80} value={70} />
                                         </div>
                                         {/* End Circle */}
                                     </div>
@@ -236,19 +216,7 @@ export default function ProjectOverview() {
                                     <div className="col-auto">
                                         {/* Circle */}
                                         <div className="circles-chart">
-                                            <div className="js-circle" data-hs-circles-options="{
-                             &quot;value&quot;: 67,
-                             &quot;maxValue&quot;: 100,
-                             &quot;duration&quot;: 2000,
-                             &quot;isViewportInit&quot;: true,
-                             &quot;radius&quot;: 25,
-                             &quot;width&quot;: 3,
-                             &quot;fgStrokeLinecap&quot;: &quot;round&quot;,
-                             &quot;textFontSize&quot;: 14,
-                             &quot;additionalText&quot;: &quot;%&quot;,
-                             &quot;textClass&quot;: &quot;circles-chart-content&quot;,
-                             &quot;textColor&quot;: &quot;#377dff&quot;
-                           }" />
+                                        <Gauge width={80} height={80} value={90} />
                                         </div>
                                         {/* End Circle */}
                                     </div>
@@ -281,19 +249,7 @@ export default function ProjectOverview() {
                                     <div className="col-auto">
                                         {/* Circle */}
                                         <div className="circles-chart">
-                                            <div className="js-circle" data-hs-circles-options="{
-                             &quot;value&quot;: 41,
-                             &quot;maxValue&quot;: 100,
-                             &quot;duration&quot;: 2000,
-                             &quot;isViewportInit&quot;: true,
-                             &quot;radius&quot;: 25,
-                             &quot;width&quot;: 3,
-                             &quot;fgStrokeLinecap&quot;: &quot;round&quot;,
-                             &quot;textFontSize&quot;: 14,
-                             &quot;additionalText&quot;: &quot;%&quot;,
-                             &quot;textClass&quot;: &quot;circles-chart-content&quot;,
-                             &quot;textColor&quot;: &quot;#377dff&quot;
-                           }" />
+                                        <Gauge width={80} height={80} value={40} />
                                         </div>
                                         {/* End Circle */}
                                     </div>
@@ -348,91 +304,8 @@ export default function ProjectOverview() {
                     {/* Body */}
                     <div className="card-body">
                         {/* Bar Chart */}
-                        <div className="chartjs-custom" style={{ height: '18rem' }}>
-                            <canvas id="project" className="js-chart" data-hs-chartjs-options="{
-                        &quot;type&quot;: &quot;line&quot;,
-                        &quot;data&quot;: {
-                           &quot;labels&quot;: [&quot;Feb&quot;,&quot;Jan&quot;,&quot;Mar&quot;,&quot;Apr&quot;,&quot;May&quot;,&quot;Jun&quot;,&quot;Jul&quot;,&quot;Aug&quot;,&quot;Sep&quot;,&quot;Oct&quot;,&quot;Nov&quot;,&quot;Dec&quot;],
-                           &quot;datasets&quot;: [{
-                            &quot;data&quot;: [18,51,60,38,88,50,40,52,88,80,60,70],
-                            &quot;backgroundColor&quot;: [&quot;rgba(55, 125, 255, 0)&quot;, &quot;rgba(255, 255, 255, 0)&quot;],
-                            &quot;borderColor&quot;: &quot;#377dff&quot;,
-                            &quot;borderWidth&quot;: 2,
-                            &quot;pointRadius&quot;: 0,
-                            &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                            &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
-                            &quot;pointHoverRadius&quot;: 0,
-                            &quot;hoverBorderColor&quot;: &quot;#fff&quot;,
-                            &quot;hoverBackgroundColor&quot;: &quot;#377dff&quot;,
-                             &quot;tension&quot;: 0.4
-                          },
-                          {
-                            &quot;data&quot;: [27,38,60,77,40,50,49,29,42,27,42,50],
-                            &quot;backgroundColor&quot;: [&quot;rgba(0, 201, 219, 0)&quot;, &quot;rgba(255, 255, 255, 0)&quot;],
-                            &quot;borderColor&quot;: &quot;#00c9db&quot;,
-                            &quot;borderWidth&quot;: 2,
-                            &quot;pointRadius&quot;: 0,
-                            &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                            &quot;pointBackgroundColor&quot;: &quot;#00c9db&quot;,
-                            &quot;pointHoverRadius&quot;: 0,
-                            &quot;hoverBorderColor&quot;: &quot;#fff&quot;,
-                            &quot;hoverBackgroundColor&quot;: &quot;#00c9db&quot;,
-                             &quot;tension&quot;: 0.4
-                          }]
-                        },
-                        &quot;options&quot;: {
-                          &quot;gradientPosition&quot;: {&quot;y1&quot;: 200},
-                           &quot;scales&quot;: {
-                              &quot;y&quot;: {
-                                &quot;grid&quot;: {
-                                  &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                  &quot;drawBorder&quot;: false,
-                                  &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                },
-                                &quot;ticks&quot;: {
-                                  &quot;min&quot;: 0,
-                                  &quot;max&quot;: 100,
-                                  &quot;stepSize&quot;: 20,
-                                  &quot;color&quot;: &quot;#97a4af&quot;,                                
-                                  &quot;font&quot;: {
-                                    &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                  },
-                                  &quot;padding&quot;: 10,
-                                  &quot;postfix&quot;: &quot;k&quot;
-                                }
-                              },
-                              &quot;x&quot;: {
-                                &quot;grid&quot;: {
-                                  &quot;display&quot;: false,
-                                  &quot;drawBorder&quot;: false
-                                },
-                                &quot;ticks&quot;: {
-                                 &quot;color&quot;: &quot;#97a4af&quot;,
-                                  &quot;font&quot;: {
-                                    &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                  },
-                                  &quot;padding&quot;: 5
-                                }
-                              }
-                          },
-                          &quot;plugins&quot;: {
-                            &quot;tooltip&quot;: {
-                              &quot;prefix&quot;: &quot;$&quot;,
-                              &quot;postfix&quot;: &quot;k&quot;,
-                              &quot;hasIndicator&quot;: true,
-                              &quot;mode&quot;: &quot;index&quot;,
-                              &quot;intersect&quot;: false,
-                              &quot;lineMode&quot;: true,
-                              &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
-                            }
-                          },
-                          &quot;hover&quot;: {
-                            &quot;mode&quot;: &quot;nearest&quot;,
-                            &quot;intersect&quot;: true
-                          }
-                        }
-                      }">
-                            </canvas>
+                        <div className="chartjs-custom chartsvg" style={{ height: '18rem' }}>
+                            <SalesGraph />
                         </div>
                         {/* End Bar Chart */}
                     </div>
@@ -461,33 +334,8 @@ export default function ProjectOverview() {
                             {/* Body */}
                             <div className="card-body">
                                 {/* Pie Chart */}
-                                <div className="chartjs-custom mb-3 mb-sm-5" style={{ height: '14rem' }}>
-                                    <canvas id="updatingDoughnutChart" data-hs-chartjs-options="{
-                            &quot;type&quot;: &quot;doughnut&quot;,
-                            &quot;data&quot;: {
-                              &quot;labels&quot;: [&quot;USD&quot;, &quot;USD&quot;, &quot;USD&quot;],
-                              &quot;datasets&quot;: [{
-                                &quot;backgroundColor&quot;: [&quot;#377dff&quot;, &quot;#00c9db&quot;, &quot;#e7eaf3&quot;],
-                                &quot;borderWidth&quot;: 5,
-                                &quot;hoverBorderColor&quot;: &quot;#fff&quot;
-                              }]
-                            },
-                            &quot;options&quot;: {
-                              &quot;cutoutPercentage&quot;: 80,
-                              &quot;plugins&quot;: {
-                                &quot;tooltip&quot;: {
-                                  &quot;postfix&quot;: &quot;k&quot;,
-                                  &quot;hasIndicator&quot;: true,
-                                  &quot;mode&quot;: &quot;index&quot;,
-                                  &quot;intersect&quot;: false
-                                }
-                              },
-                              &quot;hover&quot;: {
-                                &quot;mode&quot;: &quot;nearest&quot;,
-                                &quot;intersect&quot;: true
-                              }
-                            }
-                          }" />
+                                <div className="chartjs-custom mb-3 mb-sm-5 chartsvg flex" style={{ height: '14rem' }}>
+                                   <MyPieChart />
                                 </div>
                                 {/* End Pie Chart */}
                                 <div className="row justify-content-center">
@@ -833,18 +681,7 @@ export default function ProjectOverview() {
                     <div className="card-body">
                         {/* Matrix Chart */}
                         <div className="chartjs-matrix-custom mb-3" style={{ minWidth: '100%', width: '700px' }}>
-                            <canvas className="js-chart-matrix" style={{ minHeight: '150px' }} data-hs-chartjs-options="{
-                &quot;options&quot;: {
-                  &quot;matrixBackgroundColord&quot;: {
-                     &quot;color&quot;: &quot;#377dff&quot;,
-                     &quot;accent&quot;: 50,
-                     &quot;additionToValue&quot;: 2
-                  },
-                  &quot;matrixLegend&quot;: {
-                    &quot;container&quot;: &quot;#matrixLegend&quot;
-                  }
-                }
-              }" />
+                            <HoursSpentChart />
                         </div>
                         {/* End Matrix Chart */}
                         {/* Matrix Legend */}

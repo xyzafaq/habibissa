@@ -1,4 +1,23 @@
 import React from 'react'
+import { BarChart } from '@mui/x-charts/BarChart';
+
+function ChartsOverviewDemo() {
+    return (
+        <BarChart
+            series={[
+                { data: [70, 44, 120, 100, 150, 70, 140, 60, 40, 30, 65, 84], color: '#377dff' },
+            ]}
+            height={290}
+            sx={{
+                '& .MuiBarChart-bar': {
+                    width: '20px !important', // Force the width of each bar to 20px
+                },
+            }}
+            xAxis={[{ data: ['Jan', 'Feb', 'March', 'April', 'May', 'June', 'July', 'August', 'Sep', 'Oct', 'Nov', 'Dec'], scaleType: 'band' }]}
+            margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+        />
+    );
+}
 
 export default function EcommRefferal() {
     return (
@@ -142,71 +161,8 @@ export default function EcommRefferal() {
                             {/* Body */}
                             <div className="card-body">
                                 {/* Bar Chart */}
-                                <div className="chartjs-custom">
-                                    <canvas id="referrals" className="js-chart" style={{ height: '15rem' }} data-hs-chartjs-options="{
-                          &quot;type&quot;: &quot;bar&quot;,
-                          &quot;data&quot;: {
-                            &quot;labels&quot;: [&quot;Jan&quot;, &quot;Feb&quot;, &quot;March&quot;, &quot;Apr&quot;, &quot;May&quot;, &quot;June&quot;, &quot;July&quot;, &quot;Aug&quot;, &quot;Sep&quot;, &quot;Oct&quot;, &quot;Nov&quot;, &quot;Dec&quot;],
-                            &quot;datasets&quot;: [{
-                              &quot;data&quot;: [200, 300, 290, 350, 150, 350, 300, 100, 125, 220, 390, 220],
-                              &quot;backgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;hoverBackgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;borderColor&quot;: &quot;#377dff&quot;,
-                              &quot;maxBarThickness&quot;: &quot;10&quot;
-                            }]
-                          },
-                          &quot;options&quot;: {
-                            &quot;scales&quot;: {
-                              &quot;y&quot;: {
-                                &quot;grid&quot;: {
-                                  &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                  &quot;drawBorder&quot;: false,
-                                  &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                },
-                                &quot;ticks&quot;: {
-                                  &quot;beginAtZero&quot;: true,
-                                  &quot;stepSize&quot;: 100,
-                                  &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                  &quot;padding&quot;: 10,
-                                  &quot;postfix&quot;: &quot;$&quot;
-                                }
-                              },
-                              &quot;x&quot;: {
-                                &quot;grid&quot;: {
-                                  &quot;display&quot;: false,
-                                  &quot;drawBorder&quot;: false
-                                },
-                                &quot;ticks&quot;: {
-                                  &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                  &quot;padding&quot;: 5
-                                },
-                                &quot;categoryPercentage&quot;: 0.5,
-                                &quot;maxBarThickness&quot;: &quot;10&quot;
-                              }
-                            },
-                            &quot;cornerRadius&quot;: 2,
-                            &quot;plugins&quot;: {
-                              &quot;tooltip&quot;: {
-                                &quot;prefix&quot;: &quot;$&quot;,
-                                &quot;hasIndicator&quot;: true,
-                                &quot;mode&quot;: &quot;index&quot;,
-                                &quot;intersect&quot;: false
-                              }
-                            },
-                            &quot;hover&quot;: {
-                              &quot;mode&quot;: &quot;nearest&quot;,
-                              &quot;intersect&quot;: true
-                            }
-                          }
-                        }" />
+                                <div className="chartjs-custom chartsvg flex">
+                                    <ChartsOverviewDemo />
                                 </div>
                                 {/* End Bar Chart */}
                             </div>
