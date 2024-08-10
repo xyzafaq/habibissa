@@ -58,7 +58,7 @@ export default function App() {
             <Route path='/overview' element={<Overview />} />
             <Route path='/leaderboard' element={<Leaderboard />} />
             <Route path='/add-user' element={<AddUser />} />
-            <Route path='/user-profile' element={<UserProfile />} />
+            <Route path='/profile' element={<UserProfile />} />
             <Route path='/teams' element={<Teams />} />
             <Route path='/projects' element={<Projects />} />
             <Route path='/connections' element={<Connections />} />

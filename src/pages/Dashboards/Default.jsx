@@ -6,9 +6,11 @@ import {
     lineElementClasses,
     markElementClasses,
 } from '@mui/x-charts/LineChart';
+import { BarChart } from '@mui/x-charts/BarChart';
+import { PieChart } from '@mui/x-charts/PieChart';
 
-const pData = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
-const xLabels = [
+const pData1 = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
+const xLabels1 = [
     'Page A',
     'Page B',
     'Page C',
@@ -18,7 +20,40 @@ const xLabels = [
     'Page G',
 ];
 
-function TinyLineChart() {
+const pData2 = [1200, 1398, 7000, 6000, 2000, 1000, 3000];
+const xLabels2 = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+const pData3 = [8000, 6000, 1000, 8000, 12000, 13000, 10000];
+const xLabels3 = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+const pData4 = [1000, 2000, 6000, 4000, 8000, 12000, 5000];
+const xLabels4 = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+function TinyLineChart({ pData, xLabels }) {
     return (
         <ChartContainer
             width={500}
@@ -27,14 +62,14 @@ function TinyLineChart() {
             xAxis={[{ scaleType: 'point', data: xLabels }]}
             sx={{
                 [`& .${lineElementClasses.root}`]: {
-                    stroke: '#8884d8',
-                    strokeWidth: 2,
+                    stroke: '#377dff',
+                    strokeWidth: 10,
                 },
                 [`& .${markElementClasses.root}`]: {
-                    stroke: '#8884d8',
+                    stroke: '#377dff',
                     scale: '0.6',
                     fill: '#fff',
-                    strokeWidth: 2,
+                    strokeWidth: 10,
                 },
             }}
             disableAxisListener
@@ -43,6 +78,43 @@ function TinyLineChart() {
             <MarkPlot />
         </ChartContainer>
     );
+}
+
+function ChartsOverviewDemo() {
+    return (
+        <BarChart
+            series={[
+                { data: [70, 44, 120, 100, 150, 70, 140, 60, 40, 30, 65, 84], color: '#377dff' },
+                { data: [35, 15, 45, 75, 80, 60, 80, 30, 20, 10, 40, 60], color: '#eeeeee' },
+            ]}
+            height={290}
+            sx={{
+                '& .MuiBarChart-bar': {
+                    width: '20px !important', // Force the width of each bar to 20px
+                },
+            }}
+            xAxis={[{ data: ['May 1', 'Mayy 2', 'May 3', 'May 4', 'May 5', 'May 6', 'May 7', 'May 8', 'May 9', 'May 10', 'May 11', 'May 12'], scaleType: 'band' }]}
+            margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+        />
+    );
+}
+
+function BasicPie() {
+  return (
+    <PieChart
+      series={[
+        {
+          data: [
+            { id: 0, value: 25, label: 'series A', color: '#377dff' },
+            { id: 1, value: 15, label: 'series B', color: 'rgb(112, 0, 242)' },
+            { id: 2, value: 5, label: 'series C', color: '#00c9a7' },
+          ],
+        },
+      ]}
+      width={400}
+      height={200}
+    />
+  );
 }
 
 export default function Default() {
@@ -80,7 +152,7 @@ export default function Default() {
                                     {/* End Col */}
                                     <div className="col-6">
                                         {/* Chart */}
-                                        <div className="chartjs-custom" style={{ height: '3rem' }}>
+                                        <div className="chartjs-custom chartsvg">
                                             {/* <canvas className="js-chart" data-hs-chartjs-options="{
                                 &quot;type&quot;: &quot;line&quot;,
                                 &quot;data&quot;: {
@@ -117,7 +189,7 @@ export default function Default() {
                                 }
                               }">
                                             </canvas> */}
-                                            <TinyLineChart />
+                                            <TinyLineChart pData={pData1} xLabels={xLabels1} />
                                         </div>
                                         {/* End Chart */}
                                     </div>
@@ -144,8 +216,8 @@ export default function Default() {
                                     {/* End Col */}
                                     <div className="col-6">
                                         {/* Chart */}
-                                        <div className="chartjs-custom" style={{ height: '3rem' }}>
-                                            <canvas className="js-chart" data-hs-chartjs-options="{
+                                        <div className="chartjs-custom chartsvg">
+                                            {/* <canvas className="js-chart" data-hs-chartjs-options="{
                                 &quot;type&quot;: &quot;line&quot;,
                                 &quot;data&quot;: {
                                    &quot;labels&quot;: [&quot;1 May&quot;,&quot;2 May&quot;,&quot;3 May&quot;,&quot;4 May&quot;,&quot;5 May&quot;,&quot;6 May&quot;,&quot;7 May&quot;,&quot;8 May&quot;,&quot;9 May&quot;,&quot;10 May&quot;,&quot;11 May&quot;,&quot;12 May&quot;,&quot;13 May&quot;,&quot;14 May&quot;,&quot;15 May&quot;,&quot;16 May&quot;,&quot;17 May&quot;,&quot;18 May&quot;,&quot;19 May&quot;,&quot;20 May&quot;,&quot;21 May&quot;,&quot;22 May&quot;,&quot;23 May&quot;,&quot;24 May&quot;,&quot;25 May&quot;,&quot;26 May&quot;,&quot;27 May&quot;,&quot;28 May&quot;,&quot;29 May&quot;,&quot;30 May&quot;,&quot;31 May&quot;],
@@ -180,7 +252,8 @@ export default function Default() {
                                   }
                                 }
                               }">
-                                            </canvas>
+                                            </canvas> */}
+                                            <TinyLineChart pData={pData2} xLabels={xLabels2} />
                                         </div>
                                         {/* End Chart */}
                                     </div>
@@ -207,8 +280,8 @@ export default function Default() {
                                     {/* End Col */}
                                     <div className="col-6">
                                         {/* Chart */}
-                                        <div className="chartjs-custom" style={{ height: '3rem' }}>
-                                            <canvas className="js-chart" data-hs-chartjs-options="{
+                                        <div className="chartjs-custom chartsvg">
+                                            {/* <canvas className="js-chart" data-hs-chartjs-options="{
                                 &quot;type&quot;: &quot;line&quot;,
                                 &quot;data&quot;: {
                                    &quot;labels&quot;: [&quot;1 May&quot;,&quot;2 May&quot;,&quot;3 May&quot;,&quot;4 May&quot;,&quot;5 May&quot;,&quot;6 May&quot;,&quot;7 May&quot;,&quot;8 May&quot;,&quot;9 May&quot;,&quot;10 May&quot;,&quot;11 May&quot;,&quot;12 May&quot;,&quot;13 May&quot;,&quot;14 May&quot;,&quot;15 May&quot;,&quot;16 May&quot;,&quot;17 May&quot;,&quot;18 May&quot;,&quot;19 May&quot;,&quot;20 May&quot;,&quot;21 May&quot;,&quot;22 May&quot;,&quot;23 May&quot;,&quot;24 May&quot;,&quot;25 May&quot;,&quot;26 May&quot;,&quot;27 May&quot;,&quot;28 May&quot;,&quot;29 May&quot;,&quot;30 May&quot;,&quot;31 May&quot;],
@@ -243,7 +316,8 @@ export default function Default() {
                                   }
                                 }
                               }">
-                                            </canvas>
+                                            </canvas> */}
+                                            <TinyLineChart pData={pData3} xLabels={xLabels3} />
                                         </div>
                                         {/* End Chart */}
                                     </div>
@@ -270,8 +344,8 @@ export default function Default() {
                                     {/* End Col */}
                                     <div className="col-6">
                                         {/* Chart */}
-                                        <div className="chartjs-custom" style={{ height: '3rem' }}>
-                                            <canvas className="js-chart" data-hs-chartjs-options="{
+                                        <div className="chartjs-custom chartsvg">
+                                            {/* <canvas className="js-chart" data-hs-chartjs-options="{
                                 &quot;type&quot;: &quot;line&quot;,
                                 &quot;data&quot;: {
                                    &quot;labels&quot;: [&quot;1 May&quot;,&quot;2 May&quot;,&quot;3 May&quot;,&quot;4 May&quot;,&quot;5 May&quot;,&quot;6 May&quot;,&quot;7 May&quot;,&quot;8 May&quot;,&quot;9 May&quot;,&quot;10 May&quot;,&quot;11 May&quot;,&quot;12 May&quot;,&quot;13 May&quot;,&quot;14 May&quot;,&quot;15 May&quot;,&quot;16 May&quot;,&quot;17 May&quot;,&quot;18 May&quot;,&quot;19 May&quot;,&quot;20 May&quot;,&quot;21 May&quot;,&quot;22 May&quot;,&quot;23 May&quot;,&quot;24 May&quot;,&quot;25 May&quot;,&quot;26 May&quot;,&quot;27 May&quot;,&quot;28 May&quot;,&quot;29 May&quot;,&quot;30 May&quot;,&quot;31 May&quot;],
@@ -306,7 +380,8 @@ export default function Default() {
                                   }
                                 }
                               }">
-                                            </canvas>
+                                            </canvas> */}
+                                            <TinyLineChart pData={pData4} xLabels={xLabels4} />
                                         </div>
                                         {/* End Chart */}
                                     </div>
@@ -495,6 +570,7 @@ export default function Default() {
                                 {/* End Row */}
                                 {/* Bar Chart */}
                                 <div className="chartjs-custom">
+                                    {/* <>
                                     <canvas id="updatingBarChart" style={{ height: '20rem' }} data-hs-chartjs-options="{
                             &quot;type&quot;: &quot;bar&quot;,
                             &quot;data&quot;: {
@@ -561,6 +637,8 @@ export default function Default() {
                               }
                             }
                           }" />
+                                    </> */}
+                                    <ChartsOverviewDemo />
                                 </div>
                                 {/* End Bar Chart */}
                             </div>
@@ -1227,8 +1305,9 @@ export default function Default() {
                             {/* Body */}
                             <div className="card-body">
                                 {/* Chart */}
-                                <div className="chartjs-custom mx-auto" style={{ height: '20rem' }}>
-                                    <canvas className="js-chart-datalabels" data-hs-chartjs-options="{
+                                <div className="chartjs-custom mx-auto flex" style={{ height: '20rem' }}>
+                                    {/* <>
+                                        <canvas className="js-chart-datalabels" data-hs-chartjs-options="{
                                 &quot;type&quot;: &quot;bubble&quot;,
                                 &quot;data&quot;: {
                                   &quot;datasets&quot;: [
@@ -1300,6 +1379,8 @@ export default function Default() {
                                   }
                                 }
                               }" />
+                                    </> */}
+                                    <BasicPie />
                                 </div>
                                 {/* End Chart */}
                                 <div className="row justify-content-center">

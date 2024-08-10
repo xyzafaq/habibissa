@@ -1,4 +1,82 @@
 import React from 'react'
+import { ChartContainer } from '@mui/x-charts/ChartContainer';
+import {
+    LinePlot,
+    MarkPlot,
+    lineElementClasses,
+    markElementClasses,
+} from '@mui/x-charts/LineChart';
+
+const pData1 = [2400, 1398, 9800, 3908, 4800, 3800, 4300];
+const xLabels1 = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+const pData2 = [1200, 1398, 7000, 6000, 2000, 1000, 3000];
+const xLabels2 = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+const pData3 = [8000, 6000, 1000, 8000, 12000, 13000, 10000];
+const xLabels3 = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+const pData4 = [1000, 2000, 6000, 4000, 8000, 12000, 5000];
+const xLabels4 = [
+    'Page A',
+    'Page B',
+    'Page C',
+    'Page D',
+    'Page E',
+    'Page F',
+    'Page G',
+];
+
+function TinyLineChart({ pData, xLabels }) {
+    return (
+        <ChartContainer
+            width={1000}
+            height={300}
+            series={[{ type: 'line', data: pData }]}
+            xAxis={[{ scaleType: 'point', data: xLabels }]}
+            sx={{
+                [`& .${lineElementClasses.root}`]: {
+                    stroke: '#377dff',
+                    strokeWidth: 20,
+                },
+                [`& .${markElementClasses.root}`]: {
+                    stroke: '#377dff',
+                    scale: '0.6',
+                    fill: '#fff',
+                    strokeWidth: 20,
+                },
+            }}
+            disableAxisListener
+        >
+            <LinePlot />
+            <MarkPlot />
+        </ChartContainer>
+    );
+}
 
 export default function Leaderboard() {
     return (
@@ -80,36 +158,8 @@ export default function Leaderboard() {
                                             <td>20</td>
                                             <td>35</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [15,15,7,27,34,25,30],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData2} xLabels={xLabels2} />
                                                 </div>
                                             </td>
                                             <td>
@@ -135,36 +185,8 @@ export default function Leaderboard() {
                                             <td>12</td>
                                             <td>54</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [6,3,24,20,10,11,14],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData1} xLabels={xLabels1} />
                                                 </div>
                                             </td>
                                             <td>
@@ -190,36 +212,8 @@ export default function Leaderboard() {
                                             <td>62</td>
                                             <td>31</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [26,13,34,40,50,21,17],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData3} xLabels={xLabels3} />
                                                 </div>
                                             </td>
                                             <td>
@@ -245,36 +239,8 @@ export default function Leaderboard() {
                                             <td>0</td>
                                             <td>76</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [22,22,34,20,10,11,25],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData3} xLabels={xLabels3} />
                                                 </div>
                                             </td>
                                             <td>
@@ -300,36 +266,8 @@ export default function Leaderboard() {
                                             <td>8</td>
                                             <td>25</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [9,15,35,20,10,20,22],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData4} xLabels={xLabels4} />
                                                 </div>
                                             </td>
                                             <td>
@@ -355,36 +293,8 @@ export default function Leaderboard() {
                                             <td>44</td>
                                             <td>4</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [6,3,24,20,10,25,14],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData2} xLabels={xLabels2} />
                                                 </div>
                                             </td>
                                             <td>
@@ -410,36 +320,8 @@ export default function Leaderboard() {
                                             <td>25</td>
                                             <td>43</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [35,40,14,10,20,15,10],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData1} xLabels={xLabels1} />
                                                 </div>
                                             </td>
                                             <td>
@@ -465,36 +347,8 @@ export default function Leaderboard() {
                                             <td>55</td>
                                             <td>15</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [26,23,24,30,40,29,34],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData3} xLabels={xLabels3} />
                                                 </div>
                                             </td>
                                             <td>
@@ -520,36 +374,8 @@ export default function Leaderboard() {
                                             <td>4</td>
                                             <td>57</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [16,25,29,31,5,9,12],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData4} xLabels={xLabels4} />
                                                 </div>
                                             </td>
                                             <td>
@@ -575,36 +401,8 @@ export default function Leaderboard() {
                                             <td>9</td>
                                             <td>61</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [36,43,24,10,7,15,20],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData1} xLabels={xLabels1} />
                                                 </div>
                                             </td>
                                             <td>
@@ -652,36 +450,8 @@ export default function Leaderboard() {
                                             <td>56</td>
                                             <td>35</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [21,20,24,20,18,30,50],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData2} xLabels={xLabels2} />
                                                 </div>
                                             </td>
                                             <td>
@@ -707,36 +477,8 @@ export default function Leaderboard() {
                                             <td>82</td>
                                             <td>31</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [4,20,24,25,25,25,26],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                  <TinyLineChart pData={pData4} xLabels={xLabels4} />
                                                 </div>
                                             </td>
                                             <td>
@@ -762,36 +504,8 @@ export default function Leaderboard() {
                                             <td>34</td>
                                             <td>76</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [30,20,40,15,18,20,25],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData1} xLabels={xLabels1} />
                                                 </div>
                                             </td>
                                             <td>
@@ -817,36 +531,8 @@ export default function Leaderboard() {
                                             <td>84</td>
                                             <td>25</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [5,8,12,20,18,25,15],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                                <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData3} xLabels={xLabels3} />
                                                 </div>
                                             </td>
                                             <td>
@@ -872,36 +558,8 @@ export default function Leaderboard() {
                                             <td>33</td>
                                             <td>54</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [10,20,22,20,22,17,12],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData2} xLabels={xLabels2} />
                                                 </div>
                                             </td>
                                             <td>
@@ -927,36 +585,8 @@ export default function Leaderboard() {
                                             <td>10</td>
                                             <td>4</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [5,20,24,10,18,14,9],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData1} xLabels={xLabels1} />
                                                 </div>
                                             </td>
                                             <td>
@@ -982,37 +612,9 @@ export default function Leaderboard() {
                                             <td>2</td>
                                             <td>57</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [10,23,32,20,44,17,23],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                              <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData3} xLabels={xLabels3} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1037,37 +639,9 @@ export default function Leaderboard() {
                                             <td>5</td>
                                             <td>15</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [35,15,24,12,18,9,8],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData2} xLabels={xLabels2} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-danger text-danger p-1">
@@ -1092,37 +666,9 @@ export default function Leaderboard() {
                                             <td>29</td>
                                             <td>43</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [4,20,24,10,18,8,19],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData1} xLabels={xLabels1} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1147,37 +693,9 @@ export default function Leaderboard() {
                                             <td>11</td>
                                             <td>61</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [10,20,12,20,24,17,35],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData3} xLabels={xLabels3} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1224,37 +742,9 @@ export default function Leaderboard() {
                                             <td>45</td>
                                             <td>31</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [15,36,17,20,4,30,32],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData4} xLabels={xLabels4} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1279,37 +769,9 @@ export default function Leaderboard() {
                                             <td>12</td>
                                             <td>35</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [22,15,24,47,18,25,29],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData1} xLabels={xLabels1} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1334,37 +796,9 @@ export default function Leaderboard() {
                                             <td>1</td>
                                             <td>54</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [5,15,12,31,18,14,10],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData2} xLabels={xLabels2} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-danger text-danger p-1">
@@ -1389,37 +823,9 @@ export default function Leaderboard() {
                                             <td>0</td>
                                             <td>4</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [16,15,22,47,33,15,10],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData3} xLabels={xLabels3} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-danger text-danger p-1">
@@ -1444,37 +850,9 @@ export default function Leaderboard() {
                                             <td>10</td>
                                             <td>25</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [12,15,55,47,24,20,22],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData4} xLabels={xLabels4} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1499,37 +877,9 @@ export default function Leaderboard() {
                                             <td>39</td>
                                             <td>76</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [22,53,24,22,18,33,29],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData1} xLabels={xLabels1} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-danger text-danger p-1">
@@ -1554,37 +904,9 @@ export default function Leaderboard() {
                                             <td>64</td>
                                             <td>57</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [22,15,24,47,18,25,29],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData2} xLabels={xLabels2} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1609,37 +931,9 @@ export default function Leaderboard() {
                                             <td>83</td>
                                             <td>43</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [10,15,24,47,18,37,32],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4                                    
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData3} xLabels={xLabels3} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-danger text-danger p-1">
@@ -1664,37 +958,9 @@ export default function Leaderboard() {
                                             <td>30</td>
                                             <td>61</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [6,3,24,20,10,11,14],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData4} xLabels={xLabels4} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-success text-success p-1">
@@ -1719,37 +985,9 @@ export default function Leaderboard() {
                                             <td>15</td>
                                             <td>15</td>
                                             <td>
-                                                <div className="chartjs-custom" style={{ height: '2rem', width: '6rem' }}>
-                                                    <canvas className="js-chart" data-hs-chartjs-options="{
-                                    &quot;type&quot;: &quot;line&quot;,
-                                    &quot;data&quot;: {
-                                       &quot;labels&quot;: [&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;,&quot;value&quot;],
-                                       &quot;datasets&quot;: [{
-                                        &quot;data&quot;: [22,15,24,47,18,25,22],
-                                        &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                                        &quot;borderColor&quot;: &quot;#377dff&quot;,
-                                        &quot;borderWidth&quot;: 2,
-                                        &quot;pointRadius&quot;: 0,
-                                        &quot;pointHoverRadius&quot;: 0,
-                                        &quot;tension&quot;: 0.4
-                                      }]
-                                    },
-                                    &quot;options&quot;: {
-                                       &quot;scales&quot;: {
-                                         &quot;y&quot;: {
-                                           &quot;display&quot;: false
-                                         },
-                                         &quot;x&quot;: {
-                                           &quot;display&quot;: false
-                                         }
-                                       },
-                                       &quot;plugins&quot;: {
-                                         &quot;tooltip&quot;: false
-                                       }
-                                    }
-                                  }">
-                                                    </canvas>
-                                                </div>
+                                            <div className="chartjs-custom chartsvg" style={{ height: '2rem', width: '7rem' }}>
+                                                <TinyLineChart pData={pData1} xLabels={xLabels1} />
+                                              </div>
                                             </td>
                                             <td>
                                                 <span className="badge bg-soft-danger text-danger p-1">
