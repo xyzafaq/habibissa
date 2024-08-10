@@ -1,4 +1,26 @@
 import React from 'react'
+import { BarChart } from '@mui/x-charts/BarChart';
+import MapChart from './Components/MapChart';
+import SalesGraph from './Components/SalesGraph';
+
+function ChartsOverviewDemo() {
+    return (
+        <BarChart
+            series={[
+                { data: [70, 44, 120, 100, 150, 70, 140, 60, 40, 30, 65, 84], color: '#377dff' },
+                { data: [35, 15, 45, 75, 80, 60, 80, 30, 20, 10, 40, 60], color: '#eeeeee' },
+            ]}
+            height={290}
+            sx={{
+                '& .MuiBarChart-bar': {
+                    width: '20px !important', // Force the width of each bar to 20px
+                },
+            }}
+            xAxis={[{ data: ['1 AM', '2 AM', '3 AM', '4 AM', '5 AM', '6 AM', '7 AM', '8 AM', '9 AM', '10 AM', '11 AM', '12 PM'], scaleType: 'band' }]}
+            margin={{ top: 10, bottom: 30, left: 40, right: 10 }}
+        />
+    );
+}
 
 export default function EcomOverview() {
     return (
@@ -132,74 +154,7 @@ export default function EcomOverview() {
                             <div className="col-lg-9 mb-5 mb-lg-0">
                                 {/* Bar Chart */}
                                 <div className="chartjs-custom mb-4">
-                                    <canvas id="ecommerce-sales" className="js-chart" style={{ height: '15rem' }} data-hs-chartjs-options="{
-                          &quot;type&quot;: &quot;bar&quot;,
-                          &quot;data&quot;: {
-                            &quot;labels&quot;: [&quot;1AM&quot;,&quot;2AM&quot;,&quot;3AM&quot;,&quot;4AM&quot;,&quot;5AM&quot;,&quot;6AM&quot;,&quot;7AM&quot;,&quot;8AM&quot;,&quot;9AM&quot;,&quot;10AM&quot;,&quot;11AM&quot;],
-                            &quot;datasets&quot;: [{
-                              &quot;data&quot;: [200, 300, 290, 350, 150, 350, 300, 100, 125, 220, 200, 300, 290, 350, 150, 350, 300, 100, 125, 220, 225],
-                              &quot;backgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;hoverBackgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;borderColor&quot;: &quot;#377dff&quot;,
-                              &quot;maxBarThickness&quot;: &quot;10&quot;
-                            },
-                            {
-                              &quot;data&quot;: [150, 230, 382, 204, 169, 290, 300, 100, 300, 225, 120, 150, 230, 382, 204, 169, 290, 300, 100, 300, 140],
-                              &quot;backgroundColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;borderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;maxBarThickness&quot;: &quot;10&quot;
-                            }]
-                          },
-                          &quot;options&quot;: {
-                            &quot;scales&quot;: {
-                              &quot;y&quot;: {
-                                &quot;grid&quot;: {
-                                  &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                  &quot;drawBorder&quot;: false,
-                                  &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                },
-                                &quot;ticks&quot;: {
-                                  &quot;beginAtZero&quot;: true,
-                                  &quot;stepSize&quot;: 100,
-                                  &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                  &quot;padding&quot;: 10
-                                }
-                              },
-                              &quot;x&quot;: {
-                                &quot;grid&quot;: {
-                                  &quot;display&quot;: false,
-                                  &quot;drawBorder&quot;: false
-                                },
-                                &quot;ticks&quot;: {
-                                  &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                  &quot;padding&quot;: 5
-                                },
-                                &quot;categoryPercentage&quot;: 0.5,
-                                &quot;maxBarThickness&quot;: &quot;10&quot;
-                              }
-                            },
-                            &quot;cornerRadius&quot;: 2,
-                            &quot;plugins&quot;: {
-                              &quot;tooltip&quot;: {
-                                &quot;hasIndicator&quot;: true,
-                                &quot;mode&quot;: &quot;index&quot;,
-                                &quot;intersect&quot;: false
-                              }
-                            },
-                            &quot;hover&quot;: {
-                              &quot;mode&quot;: &quot;nearest&quot;,
-                              &quot;intersect&quot;: true
-                            }
-                          }
-                        }" />
+                                    <ChartsOverviewDemo />
                                 </div>
                                 {/* End Bar Chart */}
                                 <div className="row justify-content-center">
@@ -259,7 +214,7 @@ export default function EcomOverview() {
                                     <div className="d-flex align-items-center">
                                         <div className="flex-shrink-0">
                                             <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-megaphone.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="default" />
-                                            <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-megaphone.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="dark" />
+                                            {/* <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-megaphone.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="dark" /> */}
                                         </div>
                                         <div className="flex-grow-1 ms-4">
                                             <h3 className="text-inherit mb-1">Product</h3>
@@ -278,7 +233,7 @@ export default function EcomOverview() {
                                     <div className="d-flex align-items-center">
                                         <div className="flex-shrink-0">
                                             <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-collection.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="default" />
-                                            <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-collection.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="dark" />
+                                            {/* <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-collection.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="dark" /> */}
                                         </div>
                                         <div className="flex-grow-1 ms-4">
                                             <h3 className="text-inherit mb-1">Collection</h3>
@@ -297,7 +252,7 @@ export default function EcomOverview() {
                                     <div className="d-flex align-items-center">
                                         <div className="flex-shrink-0">
                                             <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations/oc-discount.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="default" />
-                                            <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-discount.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="dark" />
+                                            {/* <img className="avatar avatar-lg avatar-4x3" src="./assets/svg/illustrations-light/oc-discount.svg" alt="Image Description" style={{ minHeight: '5rem' }} data-hs-theme-appearance="dark" /> */}
                                         </div>
                                         <div className="flex-grow-1 ms-4">
                                             <h3 className="text-inherit mb-1">Discount</h3>
@@ -554,7 +509,7 @@ export default function EcomOverview() {
                             <div className="col-lg-7">
                                 {/* JSVector Map */}
                                 <div style={{ height: '20.5rem' }}>
-                                    <div className="js-jsvectormap jsvectormap-custom" data-hs-js-vector-map-options="{
+                                    {/* <div className="js-jsvectormap jsvectormap-custom" data-hs-js-vector-map-options="{
                       &quot;regionStyle&quot;: {
                         &quot;initial&quot;: {
                           &quot;fill&quot;: &quot;#bdc5d1&quot;
@@ -577,7 +532,8 @@ export default function EcomOverview() {
                         }
                       }
 										}">
-                                    </div>
+                                    </div> */}
+                                    <MapChart />
                                 </div>
                                 {/* End JSVector Map */}
                             </div>
@@ -714,90 +670,8 @@ export default function EcomOverview() {
                                 </div>
                                 {/* End Row */}
                                 {/* Bar Chart */}
-                                <div className="chartjs-custom mb-4" style={{ height: '18rem' }}>
-                                    <canvas id="ecommerce-overview-1" className="js-chart" data-hs-chartjs-options="{
-                          &quot;type&quot;: &quot;line&quot;,
-                          &quot;data&quot;: {
-                             &quot;labels&quot;: [&quot;1AM&quot;,&quot;2AM&quot;,&quot;3AM&quot;,&quot;4AM&quot;,&quot;5AM&quot;,&quot;6AM&quot;,&quot;7AM&quot;,&quot;8AM&quot;,&quot;9AM&quot;,&quot;10AM&quot;],
-                             &quot;datasets&quot;: [{
-                              &quot;data&quot;: [200, 200, 240, 350, 200, 350, 200, 250, 285, 220],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#377dff&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            },
-                            {
-                              &quot;data&quot;: [150, 230, 382, 204, 269, 290, 200, 250, 200, 225],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            }]
-                          },
-                          &quot;options&quot;: {
-                             &quot;scales&quot;: {
-                                &quot;y&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                    &quot;drawBorder&quot;: false,
-                                    &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;beginAtZero&quot;: true,
-                                    &quot;stepSize&quot;: 100,
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 10,
-                                    &quot;prefix&quot;: &quot;$&quot;,
-                                    &quot;postfix&quot;: &quot;k&quot;
-                                  }
-                                },
-                                &quot;x&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;display&quot;: false,
-                                    &quot;drawBorder&quot;: false
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 5
-                                  }
-                                }
-                            },
-                            &quot;plugins&quot;: {
-                              &quot;tooltip&quot;: {
-                                &quot;prefix&quot;: &quot;$&quot;,
-                                &quot;postfix&quot;: &quot;k&quot;,
-                                &quot;hasIndicator&quot;: true,
-                                &quot;mode&quot;: &quot;index&quot;,
-                                &quot;intersect&quot;: false,
-                                &quot;lineMode&quot;: true,
-                                &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
-                              }
-                            },
-                            &quot;hover&quot;: {
-                              &quot;mode&quot;: &quot;nearest&quot;,
-                              &quot;intersect&quot;: true
-                            }
-                          }
-                        }">
-                                    </canvas>
+                                <div className="chartjs-custom mb-4 chartsvg flex" style={{ height: '18rem' }}>
+                                    <SalesGraph />
                                 </div>
                                 {/* End Bar Chart */}
                                 {/* Legend Indicators */}
@@ -835,88 +709,8 @@ export default function EcomOverview() {
                                 </div>
                                 {/* End Row */}
                                 {/* Bar Chart */}
-                                <div className="chartjs-custom mb-4" style={{ height: '18rem' }}>
-                                    <canvas id="ecommerce-overview-2" className="js-chart" data-hs-chartjs-options="{
-                          &quot;type&quot;: &quot;line&quot;,
-                          &quot;data&quot;: {
-                             &quot;labels&quot;: [&quot;1AM&quot;,&quot;2AM&quot;,&quot;3AM&quot;,&quot;4AM&quot;,&quot;5AM&quot;,&quot;6AM&quot;,&quot;7AM&quot;,&quot;8AM&quot;,&quot;9AM&quot;,&quot;10AM&quot;],
-                             &quot;datasets&quot;: [{
-                              &quot;data&quot;: [20, 20, 24, 15, 30, 35, 20, 28, 18, 16],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#377dff&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            },
-                            {
-                              &quot;data&quot;: [15, 23, 18, 20, 36, 29, 20, 22, 20, 22],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            }]
-                          },
-                          &quot;options&quot;: {
-                             &quot;scales&quot;: {
-                                &quot;y&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                    &quot;drawBorder&quot;: false,
-                                    &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;beginAtZero&quot;: true,
-                                    &quot;stepSize&quot;: 10,
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 10,
-                                    &quot;postfix&quot;: &quot;k&quot;
-                                  }
-                                },
-                                &quot;x&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;display&quot;: false,
-                                    &quot;drawBorder&quot;: false
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 5
-                                  }
-                                }
-                            },
-                            &quot;plugins&quot;: {
-                              &quot;tooltip&quot;: {
-                                &quot;postfix&quot;: &quot;k&quot;,
-                                &quot;hasIndicator&quot;: true,
-                                &quot;mode&quot;: &quot;index&quot;,
-                                &quot;intersect&quot;: false,
-                                &quot;lineMode&quot;: true,
-                                &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
-                              }
-                            },
-                            &quot;hover&quot;: {
-                              &quot;mode&quot;: &quot;nearest&quot;,
-                              &quot;intersect&quot;: true
-                            }
-                          }
-                        }">
-                                    </canvas>
+                                <div className="chartjs-custom mb-4 flex chartsvg" style={{ height: '18rem' }}>
+                                    <SalesGraph />
                                 </div>
                                 {/* End Bar Chart */}
                                 {/* Legend Indicators */}
@@ -958,88 +752,8 @@ export default function EcomOverview() {
                                 </div>
                                 {/* End Row */}
                                 {/* Bar Chart */}
-                                <div className="chartjs-custom mb-4" style={{ height: '18rem' }}>
-                                    <canvas id="ecommerce-overview-3" className="js-chart" data-hs-chartjs-options="{
-                          &quot;type&quot;: &quot;line&quot;,
-                          &quot;data&quot;: {
-                             &quot;labels&quot;: [&quot;1AM&quot;,&quot;2AM&quot;,&quot;3AM&quot;,&quot;4AM&quot;,&quot;5AM&quot;,&quot;6AM&quot;,&quot;7AM&quot;,&quot;8AM&quot;,&quot;9AM&quot;,&quot;10AM&quot;],
-                             &quot;datasets&quot;: [{
-                              &quot;data&quot;: [15, 26, 29, 20, 23, 38, 20, 30, 20, 22],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#377dff&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            },
-                            {
-                              &quot;data&quot;: [20, 20, 15, 18, 20, 24, 35, 20, 35, 22],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            }]
-                          },
-                          &quot;options&quot;: {
-                             &quot;scales&quot;: {
-                                &quot;y&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                    &quot;drawBorder&quot;: false,
-                                    &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;beginAtZero&quot;: true,
-                                    &quot;stepSize&quot;: 10,
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 10,
-                                    &quot;postfix&quot;: &quot;k&quot;
-                                  }
-                                },
-                                &quot;x&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;display&quot;: false,
-                                    &quot;drawBorder&quot;: false
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 5
-                                  }
-                                }
-                            },
-                            &quot;plugins&quot;: {
-                               &quot;tooltip&quot;: {
-                                &quot;postfix&quot;: &quot;k&quot;,
-                                &quot;hasIndicator&quot;: true,
-                                &quot;mode&quot;: &quot;index&quot;,
-                                &quot;intersect&quot;: false,
-                                &quot;lineMode&quot;: true,
-                                &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
-                              }
-                            },
-                            &quot;hover&quot;: {
-                              &quot;mode&quot;: &quot;nearest&quot;,
-                              &quot;intersect&quot;: true
-                            }
-                          }
-                        }">
-                                    </canvas>
+                                <div className="chartjs-custom mb-4 chartsvg flex" style={{ height: '18rem' }}>
+                                    <SalesGraph />
                                 </div>
                                 {/* End Bar Chart */}
                                 {/* Legend Indicators */}
@@ -1077,86 +791,8 @@ export default function EcomOverview() {
                                 </div>
                                 {/* End Row */}
                                 {/* Bar Chart */}
-                                <div className="chartjs-custom mb-4" style={{ height: '18rem' }}>
-                                    <canvas id="ecommerce-overview-4" className="js-chart" data-hs-chartjs-options="{
-                          &quot;type&quot;: &quot;line&quot;,
-                          &quot;data&quot;: {
-                             &quot;labels&quot;: [&quot;1AM&quot;,&quot;2AM&quot;,&quot;3AM&quot;,&quot;4AM&quot;,&quot;5AM&quot;,&quot;6AM&quot;,&quot;7AM&quot;,&quot;8AM&quot;,&quot;9AM&quot;,&quot;10AM&quot;],
-                             &quot;datasets&quot;: [{
-                              &quot;data&quot;: [10, 20, 22, 15, 20, 15, 20, 19, 14, 15],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#377dff&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#377dff&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            },
-                            {
-                              &quot;data&quot;: [15, 13, 18, 10, 16, 19, 15, 14, 10, 26],
-                              &quot;backgroundColor&quot;: &quot;transparent&quot;,
-                              &quot;borderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;borderWidth&quot;: 2,
-                              &quot;pointRadius&quot;: 0,
-                              &quot;hoverBorderColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBackgroundColor&quot;: &quot;#e7eaf3&quot;,
-                              &quot;pointBorderColor&quot;: &quot;#fff&quot;,
-                              &quot;pointHoverRadius&quot;: 0,
-                              &quot;tension&quot;: 0.4
-                            }]
-                          },
-                          &quot;options&quot;: {
-                             &quot;scales&quot;: {
-                                &quot;y&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;color&quot;: &quot;#e7eaf3&quot;,
-                                    &quot;drawBorder&quot;: false,
-                                    &quot;zeroLineColor&quot;: &quot;#e7eaf3&quot;
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;beginAtZero&quot;: true,
-                                    &quot;stepSize&quot;: 10,
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 10
-                                  }
-                                },
-                                &quot;x&quot;: {
-                                  &quot;grid&quot;: {
-                                    &quot;display&quot;: false,
-                                    &quot;drawBorder&quot;: false
-                                  },
-                                  &quot;ticks&quot;: {
-                                    &quot;color&quot;: &quot;#97a4af&quot;,
-                                    &quot;font&quot;: {
-                                      &quot;size&quot;: 12,
-                                      &quot;family&quot;: &quot;Open Sans, sans-serif&quot;
-                                    },
-                                    &quot;padding&quot;: 5
-                                  }
-                                }
-                            },
-                            &quot;plugins&quot;: {
-                              &quot;tooltip&quot;: {
-                                &quot;hasIndicator&quot;: true,
-                                &quot;mode&quot;: &quot;index&quot;,
-                                &quot;intersect&quot;: false,
-                                &quot;lineMode&quot;: true,
-                                &quot;lineWithLineColor&quot;: &quot;rgba(19, 33, 68, 0.075)&quot;
-                              }
-                            },
-                            &quot;hover&quot;: {
-                              &quot;mode&quot;: &quot;nearest&quot;,
-                              &quot;intersect&quot;: true
-                            }
-                          }
-                        }">
-                                    </canvas>
+                                <div className="chartjs-custom mb-4 chartsvg flex" style={{ height: '18rem' }}>
+                                    <SalesGraph />
                                 </div>
                                 {/* End Bar Chart */}
                                 {/* Legend Indicators */}
