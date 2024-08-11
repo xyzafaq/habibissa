@@ -1,6 +1,63 @@
 import React from 'react'
+import Box from '@mui/material/Box';
+import Stepper from '@mui/material/Stepper';
+import Step from '@mui/material/Step';
+import StepButton from '@mui/material/StepButton';
+import Button from '@mui/material/Button';
+import Typography from '@mui/material/Typography';
+
+const steps = ['Details', 'Terms', 'Members'];
 
 export default function ProjectsOverview() {
+    const [activeStep, setActiveStep] = React.useState(0);
+    const [completed, setCompleted] = React.useState({});
+
+    const totalSteps = () => {
+        return steps.length;
+    };
+
+    const completedSteps = () => {
+        return Object.keys(completed).length;
+    };
+
+    const isLastStep = () => {
+        return activeStep === totalSteps() - 1;
+    };
+
+    const allStepsCompleted = () => {
+        return completedSteps() === totalSteps();
+    };
+
+    const handleNext = () => {
+        const newActiveStep =
+            isLastStep() && !allStepsCompleted()
+                ? // It's the last step, but not all steps have been completed,
+                // find the first step that has been completed
+                steps.findIndex((step, i) => !(i in completed))
+                : activeStep + 1;
+        setActiveStep(newActiveStep);
+    };
+
+    const handleBack = () => {
+        setActiveStep((prevActiveStep) => prevActiveStep - 1);
+    };
+
+    const handleStep = (step) => () => {
+        setActiveStep(step);
+    };
+
+    const handleComplete = () => {
+        const newCompleted = completed;
+        newCompleted[activeStep] = true;
+        setCompleted(newCompleted);
+        handleNext();
+    };
+
+    const handleReset = () => {
+        setActiveStep(0);
+        setCompleted({});
+    };
+
     return (
         <>
             <div className="content container-fluid">
@@ -2415,586 +2472,555 @@ export default function ProjectsOverview() {
                         {/* Body */}
                         <div className="modal-body">
                             {/* Step Form */}
-                            <form className="js-step-form" data-hs-step-form-options="{
-                  &quot;progressSelector&quot;: &quot;#createProjectStepFormProgress&quot;,
-                  &quot;stepsSelector&quot;: &quot;#createProjectStepFormContent&quot;,
-                  &quot;endSelector&quot;: &quot;#createProjectFinishBtn&quot;,
-                  &quot;isValidate&quot;: false
-                }">
-                                {/* Step */}
-                                <ul id="createProjectStepFormProgress" className="js-step-progress step step-sm step-icon-sm step-inline step-item-between mb-3 mb-sm-7">
-                                    <li className="step-item">
-                                        <a className="step-content-wrapper" href="javascript:;" data-hs-step-form-next-options="{
-                    &quot;targetSelector&quot;: &quot;#createProjectStepDetails&quot;
-                  }">
-                                            <span className="step-icon step-icon-soft-dark">1</span>
-                                            <div className="step-content">
-                                                <span className="step-title">Details</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li className="step-item">
-                                        <a className="step-content-wrapper" href="javascript:;" data-hs-step-form-next-options="{
-                     &quot;targetSelector&quot;: &quot;#createProjectStepTerms&quot;
-                   }">
-                                            <span className="step-icon step-icon-soft-dark">2</span>
-                                            <div className="step-content">
-                                                <span className="step-title">Terms</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                    <li className="step-item">
-                                        <a className="step-content-wrapper" href="javascript:;" data-hs-step-form-next-options="{
-                     &quot;targetSelector&quot;: &quot;#createProjectStepMembers&quot;
-                   }">
-                                            <span className="step-icon step-icon-soft-dark">3</span>
-                                            <div className="step-content">
-                                                <span className="step-title">Members</span>
-                                            </div>
-                                        </a>
-                                    </li>
-                                </ul>
-                                {/* End Step */}
-                                {/* Content Step Form */}
-                                <div id="createProjectStepFormContent">
-                                    <div id="createProjectStepDetails" className="active">
-                                        {/* Form */}
-                                        <div className="mb-4">
-                                            <label className="form-label">Project logo</label>
-                                            <div className="d-flex align-items-center">
-                                                {/* Avatar */}
-                                                <label className="avatar avatar-xl avatar-circle avatar-uploader me-5" htmlFor="avatarNewProjectUploader">
-                                                    <img id="avatarNewProjectImg" className="avatar-img" src="./assets/img/160x160/img2.jpg" alt="Image Description" />
-                                                    <input type="file" className="js-file-attach avatar-uploader-input" id="avatarNewProjectUploader" data-hs-file-attach-options="{
-                                &quot;textTarget&quot;: &quot;#avatarNewProjectImg&quot;,
-                                &quot;mode&quot;: &quot;image&quot;,
-                                &quot;targetAttr&quot;: &quot;src&quot;,
-                                &quot;resetTarget&quot;: &quot;.js-file-attach-reset-img&quot;,
-                                &quot;resetImg&quot;: &quot;./assets/img/160x160/img1.jpg&quot;,
-                                &quot;allowTypes&quot;: [&quot;.png&quot;, &quot;.jpeg&quot;, &quot;.jpg&quot;]
-                             }" />
-                                                    <span className="avatar-uploader-trigger">
-                                                        <i className="bi-pencil-fill avatar-uploader-icon shadow-sm" />
-                                                    </span>
-                                                </label>
-                                                {/* End Avatar */}
-                                                <button type="button" className="js-file-attach-reset-img btn btn-white">Delete</button>
-                                            </div>
-                                        </div>
-                                        {/* End Form */}
-                                        {/* Form */}
-                                        <div className="mb-4">
-                                            <label htmlFor="clientNewProjectLabel" className="form-label">Client</label>
-                                            <div className="row align-items-center">
-                                                <div className="col-12 col-md-7 mb-3">
-                                                    <div className="input-group input-group-merge">
-                                                        <div className="input-group-prepend input-group-text">
-                                                            <i className="bi-person-square" />
+                            <form className="js-step-form">
+                                <Box sx={{ width: '100%' }}>
+                                    <Stepper nonLinear activeStep={activeStep}>
+                                        {steps.map((label, index) => (
+                                            <Step key={label} completed={completed[index]}>
+                                                <StepButton color="inherit" onClick={handleStep(index)}>
+                                                    {label}
+                                                </StepButton>
+                                            </Step>
+                                        ))}
+                                    </Stepper>
+                                    <div>
+                                        {allStepsCompleted() ? (
+                                            <React.Fragment>
+                                                <div id="createProjectStepSuccessMessage">
+                                                    <div className="text-center">
+                                                        <img className="img-fluid mb-3" src="./assets/svg/illustrations/oc-hi-five.svg" alt="Image Description" data-hs-theme-appearance="default" style={{ maxWidth: '15rem' }} />
+                                                        {/* <img className="img-fluid mb-3" src="./assets/svg/illustrations-light/oc-hi-five.svg" alt="Image Description" data-hs-theme-appearance="dark" style={{ maxWidth: '15rem' }} /> */}
+                                                        <div className="mb-4">
+                                                            <h2>Successful!</h2>
+                                                            <p>New project has been successfully created.</p>
                                                         </div>
-                                                        <input className="form-control" id="clientNewProjectLabel" placeholder="Add creater name" aria-label="Add creater name" />
-                                                    </div>
-                                                </div>
-                                                {/* End Col */}
-                                                <span className="col-auto mb-3">or</span>
-                                                <div className="col-md mb-md-3">
-                                                    <a className="btn btn-white" href="javascript:;">
-                                                        <i className="tio-add me-1" />New client
-                                                    </a>
-                                                </div>
-                                                {/* End Col */}
-                                            </div>
-                                            {/* End Row */}
-                                        </div>
-                                        {/* End Form */}
-                                        {/* Form */}
-                                        <div className="mb-4">
-                                            <label htmlFor="projectNameNewProjectLabel" className="form-label">Project name <i className="bi-question-circle text-body ms-1" data-toggle="tooltip" data-placement="top" title="Displayed on public forums, such as Front." /></label>
-                                            <div className="input-group input-group-merge">
-                                                <div className="input-group-prepend input-group-text">
-                                                    <i className="bi-briefcase" />
-                                                </div>
-                                                <input type="text" className="form-control" name="projectName" id="projectNameNewProjectLabel" placeholder="Enter project name here" aria-label="Enter project name here" />
-                                            </div>
-                                        </div>
-                                        {/* End Form */}
-                                        {/* Quill */}
-                                        <div className="mb-4">
-                                            <label className="form-label">Project description <span className="form-label-secondary">(Optional)</span></label>
-                                            {/* Quill */}
-                                            <div className="quill-custom">
-                                                <div className="js-quill" style={{ height: '15rem' }} data-hs-quill-options="{
-                         &quot;placeholder&quot;: &quot;Type your message...&quot;,
-                          &quot;modules&quot;: {
-                            &quot;toolbar&quot;: [
-                              [&quot;bold&quot;, &quot;italic&quot;, &quot;underline&quot;, &quot;strike&quot;, &quot;link&quot;, &quot;image&quot;, &quot;blockquote&quot;, &quot;code&quot;, {&quot;list&quot;: &quot;bullet&quot;}]
-                            ]
-                          }
-                         }">
-                                                </div>
-                                            </div>
-                                            {/* End Quill */}
-                                        </div>
-                                        {/* End Quill */}
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                {/* Form */}
-                                                <div className="mb-4">
-                                                    <label htmlFor="projectDeadlineNewProjectLabel" className="form-label">Due date</label>
-                                                    <div id="projectDeadlineNewProject" className="input-group input-group-merge">
-                                                        <div className="input-group-prepend input-group-text">
-                                                            <i className="bi-calendar-week" />
+                                                        <div className="d-flex justify-content-center gap-3">
+                                                            <a className="btn btn-white" onClick={handleReset}>
+                                                                <i className="bi-chevron-left" /> Back to projects
+                                                            </a>
+                                                            <a className="btn btn-primary" onClick={handleReset} data-toggle="modal" data-target="#newProjectModal">
+                                                                <i className="bi-building" /> Add new project
+                                                            </a>
                                                         </div>
-                                                        <input type="text" className="form-control" id="projectDeadlineNewProjectLabel" placeholder="Select dates" />
                                                     </div>
                                                 </div>
-                                                {/* End Form */}
-                                            </div>
-                                            {/* End Col */}
-                                            <div className="col-sm-6">
-                                                {/* Form */}
-                                                <div className="mb-4">
-                                                    <label htmlFor="ownerNewProjectLabel" className="form-label">Owner</label>
-                                                    {/* Select */}
-                                                    <div className="tom-select-custom">
-                                                        <select className="js-select form-select" id="ownerNewProjectLabel" data-hs-tom-select-options="{
-                                  &quot;searchInDropdown&quot;: false,
-                                  &quot;hideSearch&quot;: true
-                                }">
-                                                            <option value="owner1" data-option-template="<span class=&quot;d-flex align-items-center&quot;><img class=&quot;avatar avatar-xss avatar-circle&quot; src=&quot;./assets/img/160x160/img6.jpg&quot; alt=&quot;Avatar&quot; /><span class=&quot;flex-grow-1 ms-2&quot;>Mark Williams</span></span>">Mark Williams</option>
-                                                            <option value="owner2" data-option-template="<span class=&quot;d-flex align-items-center&quot;><img class=&quot;avatar avatar-xss avatar-circle&quot; src=&quot;./assets/img/160x160/img10.jpg&quot; alt=&quot;Avatar&quot; /><span class=&quot;flex-grow-1 ms-2&quot;>Amanda Harvey</span></span>">Amanda Harvey</option>
-                                                            <option value="owner3" selected data-option-template="<span class=&quot;d-flex align-items-center&quot;><i class=&quot;bi-person text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;>Assign to owner</span></span>">Assign to owner</option>
-                                                        </select>
-                                                    </div>
-                                                    {/* End Select */}
-                                                </div>
-                                                {/* End Form */}
-                                            </div>
-                                            {/* End Col */}
-                                        </div>
-                                        {/* End Row */}
-                                        {/* Form */}
-                                        <div className="mb-4">
-                                            <label className="form-label">Attach files</label>
-                                            {/* Dropzone */}
-                                            <div id="attachFilesNewProjectLabel" className="js-dropzone dz-dropzone dz-dropzone-card">
-                                                <div className="dz-message">
-                                                    <img className="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="default" />
-                                                    <img className="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations-light/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="dark" />
-                                                    <h5>Drag and drop your file here</h5>
-                                                    <p className="mb-2">or</p>
-                                                    <span className="btn btn-white btn-sm">Browse files</span>
-                                                </div>
-                                            </div>
-                                            {/* End Dropzone */}
-                                        </div>
-                                        {/* End Form */}
-                                        <label className="form-label">Default view</label>
-                                        <div className="input-group input-group-md-vertical">
-                                            {/* Radio Check */}
-                                            <label className="form-control" htmlFor="projectViewNewProjectTypeRadio1">
-                                                <span className="form-check form-check-reverse">
-                                                    <input type="radio" className="form-check-input" name="projectViewNewProjectTypeRadio" id="projectViewNewProjectTypeRadio1" />
-                                                    <span className="form-check-label"><i className="bi-view-list text-muted me-2" /> List</span>
-                                                </span>
-                                            </label>
-                                            {/* End Radio Check */}
-                                            {/* Radio Check */}
-                                            <label className="form-control" htmlFor="projectViewNewProjectTypeRadio2">
-                                                <span className="form-check form-check-reverse">
-                                                    <input type="radio" className="form-check-input" name="projectViewNewProjectTypeRadio" id="projectViewNewProjectTypeRadio2" defaultChecked />
-                                                    <span className="form-check-label"><i className="bi-table text-muted me-2" /> Table</span>
-                                                </span>
-                                            </label>
-                                            {/* End Radio Check */}
-                                            {/* Radio Check */}
-                                            <label className="form-control" htmlFor="projectViewNewProjectTypeRadio3">
-                                                <span className="form-check form-check-reverse">
-                                                    <input type="radio" className="form-check-input" name="projectViewNewProjectTypeRadio" id="projectViewNewProjectTypeRadio3" disabled />
-                                                    <span className="form-check-label">Timeline</span>
-                                                    <span className="badge bg-soft-primary text-primary rounded-pill">Coming soon...</span>
-                                                </span>
-                                            </label>
-                                            {/* End Radio Check */}
-                                        </div>
-                                        {/* Footer */}
-                                        <div className="d-flex align-items-center mt-5">
-                                            <div className="ms-auto">
-                                                <button type="button" className="btn btn-primary" data-hs-step-form-next-options="{
-                              &quot;targetSelector&quot;: &quot;#createProjectStepTerms&quot;
+                                            </React.Fragment>
+                                        ) : (
+                                            <React.Fragment>
+                                                <div id="createProjectStepFormContent" style={{marginTop:'2rem'}} >
+                                                    {activeStep === 0 &&
+                                                        <div id="createProjectStepDetails">
+                                                            {/* Form */}
+                                                            <div className="mb-4">
+                                                                <label className="form-label">Project logo</label>
+                                                                <div className="d-flex align-items-center">
+                                                                    {/* Avatar */}
+                                                                    <label className="avatar avatar-xl avatar-circle avatar-uploader me-5" htmlFor="avatarNewProjectUploader">
+                                                                        <img id="avatarNewProjectImg" className="avatar-img" src="./assets/img/160x160/img2.jpg" alt="Image Description" />
+                                                                        <input type="file" className="js-file-attach avatar-uploader-input" id="avatarNewProjectUploader" data-hs-file-attach-options="{
+                                    &quot;textTarget&quot;: &quot;#avatarNewProjectImg&quot;,
+                                    &quot;mode&quot;: &quot;image&quot;,
+                                    &quot;targetAttr&quot;: &quot;src&quot;,
+                                    &quot;resetTarget&quot;: &quot;.js-file-attach-reset-img&quot;,
+                                    &quot;resetImg&quot;: &quot;./assets/img/160x160/img1.jpg&quot;,
+                                    &quot;allowTypes&quot;: [&quot;.png&quot;, &quot;.jpeg&quot;, &quot;.jpg&quot;]
+                                }" />
+                                                                        <span className="avatar-uploader-trigger">
+                                                                            <i className="bi-pencil-fill avatar-uploader-icon shadow-sm" />
+                                                                        </span>
+                                                                    </label>
+                                                                    {/* End Avatar */}
+                                                                    <button type="button" className="js-file-attach-reset-img btn btn-white">Delete</button>
+                                                                </div>
+                                                            </div>
+                                                            {/* End Form */}
+                                                            {/* Form */}
+                                                            <div className="mb-4">
+                                                                <label htmlFor="clientNewProjectLabel" className="form-label">Client</label>
+                                                                <div className="row align-items-center">
+                                                                    <div className="col-12 col-md-7 mb-3">
+                                                                        <div className="input-group input-group-merge">
+                                                                            <div className="input-group-prepend input-group-text">
+                                                                                <i className="bi-person-square" />
+                                                                            </div>
+                                                                            <input className="form-control" id="clientNewProjectLabel" placeholder="Add creater name" aria-label="Add creater name" />
+                                                                        </div>
+                                                                    </div>
+                                                                    {/* End Col */}
+                                                                    <span className="col-auto mb-3">or</span>
+                                                                    <div className="col-md mb-md-3">
+                                                                        <a className="btn btn-white" href="javascript:;">
+                                                                            <i className="tio-add me-1" />New client
+                                                                        </a>
+                                                                    </div>
+                                                                    {/* End Col */}
+                                                                </div>
+                                                                {/* End Row */}
+                                                            </div>
+                                                            {/* End Form */}
+                                                            {/* Form */}
+                                                            <div className="mb-4">
+                                                                <label htmlFor="projectNameNewProjectLabel" className="form-label">Project name <i className="bi-question-circle text-body ms-1" data-toggle="tooltip" data-placement="top" title="Displayed on public forums, such as Front." /></label>
+                                                                <div className="input-group input-group-merge">
+                                                                    <div className="input-group-prepend input-group-text">
+                                                                        <i className="bi-briefcase" />
+                                                                    </div>
+                                                                    <input type="text" className="form-control" name="projectName" id="projectNameNewProjectLabel" placeholder="Enter project name here" aria-label="Enter project name here" />
+                                                                </div>
+                                                            </div>
+                                                            {/* End Form */}
+                                                            {/* Quill */}
+                                                            <div className="mb-4">
+                                                                <label className="form-label">Project description <span className="form-label-secondary">(Optional)</span></label>
+                                                                {/* Quill */}
+                                                                <div className="quill-custom">
+                                                                    <div className="js-quill" style={{ height: '15rem' }} data-hs-quill-options="{
+                            &quot;placeholder&quot;: &quot;Type your message...&quot;,
+                            &quot;modules&quot;: {
+                                &quot;toolbar&quot;: [
+                                [&quot;bold&quot;, &quot;italic&quot;, &quot;underline&quot;, &quot;strike&quot;, &quot;link&quot;, &quot;image&quot;, &quot;blockquote&quot;, &quot;code&quot;, {&quot;list&quot;: &quot;bullet&quot;}]
+                                ]
+                            }
                             }">
-                                                    Next <i className="bi-chevron-right" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                        {/* End Footer */}
-                                    </div>
-                                    <div id="createProjectStepTerms" style={{ display: 'none' }}>
-                                        <div className="row">
-                                            <div className="col-sm-6">
-                                                {/* Form */}
-                                                <div className="mb-4">
-                                                    <label htmlFor="paymentTermsNewProjectLabel" className="form-label">Terms</label>
-                                                    {/* Select */}
-                                                    <div className="tom-select-custom">
-                                                        <select className="js-select form-select" id="paymentTermsNewProjectLabel" data-hs-tom-select-options="{
-                                  &quot;searchInDropdown&quot;: false,
-                                  &quot;hideSearch&quot;: true
-                                }">
-                                                            <option value="fixed" selected>Fixed</option>
-                                                            <option value="Per hour">Per hour</option>
-                                                            <option value="Per day">Per day</option>
-                                                            <option value="Per week">Per week</option>
-                                                            <option value="Per month">Per month</option>
-                                                            <option value="Per quarter">Per quarter</option>
-                                                            <option value="Per year">Per year</option>
-                                                        </select>
-                                                    </div>
-                                                    {/* End Select */}
-                                                </div>
-                                                {/* End Form */}
-                                            </div>
-                                            {/* End Col */}
-                                            <div className="col-sm-6">
-                                                <label htmlFor="expectedValueNewProjectLabel" className="form-label">Expected value</label>
-                                                {/* Form */}
-                                                <div className="mb-4">
-                                                    <div className="input-group input-group-merge">
-                                                        <div className="input-group-prepend input-group-text">
-                                                            <i className="bi-currency-dollar" />
+                                                                    </div>
+                                                                </div>
+                                                                {/* End Quill */}
+                                                            </div>
+                                                            {/* End Quill */}
+                                                            <div className="row">
+                                                                <div className="col-sm-6">
+                                                                    {/* Form */}
+                                                                    <div className="mb-4">
+                                                                        <label htmlFor="projectDeadlineNewProjectLabel" className="form-label">Due date</label>
+                                                                        <div id="projectDeadlineNewProject" className="input-group input-group-merge">
+                                                                            <div className="input-group-prepend input-group-text">
+                                                                                <i className="bi-calendar-week" />
+                                                                            </div>
+                                                                            <input type="text" className="form-control" id="projectDeadlineNewProjectLabel" placeholder="Select dates" />
+                                                                        </div>
+                                                                    </div>
+                                                                    {/* End Form */}
+                                                                </div>
+                                                                {/* End Col */}
+                                                                <div className="col-sm-6">
+                                                                    {/* Form */}
+                                                                    <div className="mb-4">
+                                                                        <label htmlFor="ownerNewProjectLabel" className="form-label">Owner</label>
+                                                                        {/* Select */}
+                                                                        <div className="tom-select-custom">
+                                                                            <select className="js-select form-select" id="ownerNewProjectLabel" data-hs-tom-select-options="{
+                                    &quot;searchInDropdown&quot;: false,
+                                    &quot;hideSearch&quot;: true
+                                    }">
+                                                                                <option value="owner1" data-option-template="<span class=&quot;d-flex align-items-center&quot;><img class=&quot;avatar avatar-xss avatar-circle&quot; src=&quot;./assets/img/160x160/img6.jpg&quot; alt=&quot;Avatar&quot; /><span class=&quot;flex-grow-1 ms-2&quot;>Mark Williams</span></span>">Mark Williams</option>
+                                                                                <option value="owner2" data-option-template="<span class=&quot;d-flex align-items-center&quot;><img class=&quot;avatar avatar-xss avatar-circle&quot; src=&quot;./assets/img/160x160/img10.jpg&quot; alt=&quot;Avatar&quot; /><span class=&quot;flex-grow-1 ms-2&quot;>Amanda Harvey</span></span>">Amanda Harvey</option>
+                                                                                <option value="owner3" selected data-option-template="<span class=&quot;d-flex align-items-center&quot;><i class=&quot;bi-person text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;>Assign to owner</span></span>">Assign to owner</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        {/* End Select */}
+                                                                    </div>
+                                                                    {/* End Form */}
+                                                                </div>
+                                                                {/* End Col */}
+                                                            </div>
+                                                            {/* End Row */}
+                                                            {/* Form */}
+                                                            <div className="mb-4">
+                                                                <label className="form-label">Attach files</label>
+                                                                {/* Dropzone */}
+                                                                <div id="attachFilesNewProjectLabel" className="js-dropzone dz-dropzone dz-dropzone-card">
+                                                                    <div className="dz-message">
+                                                                        <img className="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="default" />
+                                                                        {/* <img className="avatar avatar-xl avatar-4x3 mb-3" src="./assets/svg/illustrations-light/oc-browse.svg" alt="Image Description" data-hs-theme-appearance="dark" /> */}
+                                                                        <h5>Drag and drop your file here</h5>
+                                                                        <p className="mb-2">or</p>
+                                                                        <span className="btn btn-white btn-sm">Browse files</span>
+                                                                    </div>
+                                                                </div>
+                                                                {/* End Dropzone */}
+                                                            </div>
+                                                            {/* End Form */}
+                                                            <label className="form-label">Default view</label>
+                                                            <div className="input-group input-group-md-vertical">
+                                                                {/* Radio Check */}
+                                                                <label className="form-control" htmlFor="projectViewNewProjectTypeRadio1">
+                                                                    <span className="form-check form-check-reverse">
+                                                                        <input type="radio" className="form-check-input" name="projectViewNewProjectTypeRadio" id="projectViewNewProjectTypeRadio1" />
+                                                                        <span className="form-check-label"><i className="bi-view-list text-muted me-2" /> List</span>
+                                                                    </span>
+                                                                </label>
+                                                                {/* End Radio Check */}
+                                                                {/* Radio Check */}
+                                                                <label className="form-control" htmlFor="projectViewNewProjectTypeRadio2">
+                                                                    <span className="form-check form-check-reverse">
+                                                                        <input type="radio" className="form-check-input" name="projectViewNewProjectTypeRadio" id="projectViewNewProjectTypeRadio2" defaultChecked />
+                                                                        <span className="form-check-label"><i className="bi-table text-muted me-2" /> Table</span>
+                                                                    </span>
+                                                                </label>
+                                                                {/* End Radio Check */}
+                                                                {/* Radio Check */}
+                                                                <label className="form-control" htmlFor="projectViewNewProjectTypeRadio3">
+                                                                    <span className="form-check form-check-reverse">
+                                                                        <input type="radio" className="form-check-input" name="projectViewNewProjectTypeRadio" id="projectViewNewProjectTypeRadio3" disabled />
+                                                                        <span className="form-check-label">Timeline</span>
+                                                                        <span className="badge bg-soft-primary text-primary rounded-pill">Coming soon...</span>
+                                                                    </span>
+                                                                </label>
+                                                                {/* End Radio Check */}
+                                                            </div>
                                                         </div>
-                                                        <input type="text" className="form-control" name="expectedValue" id="expectedValueNewProjectLabel" placeholder="Enter value here" aria-label="Enter value here" />
-                                                    </div>
-                                                </div>
-                                                {/* End Form */}
-                                            </div>
-                                            {/* End Col */}
-                                        </div>
-                                        {/* End Form Row */}
-                                        <div className="row">
-                                            <div className="col-lg-6">
-                                                {/* Form */}
-                                                <div className="mb-4">
-                                                    <label htmlFor="milestoneNewProjectLabel" className="form-label">Milestone <a className="small ms-1" href="javascript:;">Change probability</a></label>
-                                                    {/* Select */}
-                                                    <div className="tom-select-custom">
-                                                        <select className="js-select form-select" id="milestoneNewProjectLabel" data-hs-tom-select-options="{
+                                                    }
+                                                    {activeStep === 1 &&
+                                                        <div id="createProjectStepTerms">
+                                                            <div className="row">
+                                                                <div className="col-sm-6">
+                                                                    {/* Form */}
+                                                                    <div className="mb-4">
+                                                                        <label htmlFor="paymentTermsNewProjectLabel" className="form-label">Terms</label>
+                                                                        {/* Select */}
+                                                                        <div className="tom-select-custom">
+                                                                            <select className="js-select form-select" id="paymentTermsNewProjectLabel" data-hs-tom-select-options="{
                                   &quot;searchInDropdown&quot;: false,
                                   &quot;hideSearch&quot;: true
                                 }">
-                                                            <option value="New">New</option>
-                                                            <option value="Qualified">Qualified</option>
-                                                            <option value="Meeting">Meeting</option>
-                                                            <option value="Proposal">Proposal</option>
-                                                            <option value="Negotiation">Negotiation</option>
-                                                            <option value="Contact">Contact</option>
-                                                        </select>
-                                                    </div>
-                                                    {/* End Select */}
-                                                </div>
-                                                {/* End Form */}
-                                            </div>
-                                            {/* End Col */}
-                                            <div className="col-lg-6">
-                                                {/* Form */}
-                                                <div className="mb-4">
-                                                    <label htmlFor="privacyNewProjectLabel" className="form-label me-2">Privacy</label>
-                                                    {/* Select */}
-                                                    <div className="tom-select-custom">
-                                                        <select className="js-select form-select" id="privacyNewProjectLabel" data-hs-tom-select-options="{
+                                                                                <option value="fixed" selected>Fixed</option>
+                                                                                <option value="Per hour">Per hour</option>
+                                                                                <option value="Per day">Per day</option>
+                                                                                <option value="Per week">Per week</option>
+                                                                                <option value="Per month">Per month</option>
+                                                                                <option value="Per quarter">Per quarter</option>
+                                                                                <option value="Per year">Per year</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        {/* End Select */}
+                                                                    </div>
+                                                                    {/* End Form */}
+                                                                </div>
+                                                                {/* End Col */}
+                                                                <div className="col-sm-6">
+                                                                    <label htmlFor="expectedValueNewProjectLabel" className="form-label">Expected value</label>
+                                                                    {/* Form */}
+                                                                    <div className="mb-4">
+                                                                        <div className="input-group input-group-merge">
+                                                                            <div className="input-group-prepend input-group-text">
+                                                                                <i className="bi-currency-dollar" />
+                                                                            </div>
+                                                                            <input type="text" className="form-control" name="expectedValue" id="expectedValueNewProjectLabel" placeholder="Enter value here" aria-label="Enter value here" />
+                                                                        </div>
+                                                                    </div>
+                                                                    {/* End Form */}
+                                                                </div>
+                                                                {/* End Col */}
+                                                            </div>
+                                                            {/* End Form Row */}
+                                                            <div className="row">
+                                                                <div className="col-lg-6">
+                                                                    {/* Form */}
+                                                                    <div className="mb-4">
+                                                                        <label htmlFor="milestoneNewProjectLabel" className="form-label">Milestone <a className="small ms-1" href="javascript:;">Change probability</a></label>
+                                                                        {/* Select */}
+                                                                        <div className="tom-select-custom">
+                                                                            <select className="js-select form-select" id="milestoneNewProjectLabel" data-hs-tom-select-options="{
                                   &quot;searchInDropdown&quot;: false,
                                   &quot;hideSearch&quot;: true
                                 }">
-                                                            <option value="privacy1" data-option-template="<span class=&quot;d-flex&quot;><i class=&quot;bi-people fs2 text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;><span class=&quot;d-block&quot;>Everyone</span><small class=&quot;tom-select-custom-hide&quot;>Public to Front Dashboard</small></span></span>">Everyone</option>
-                                                            <option value="privacy2" disabled data-option-template="<span class=&quot;d-flex&quot;><i class=&quot;bi-lock fs2 text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;><span class=&quot;d-block&quot;>Private to project members <span class=&quot;badge bg-soft-primary text-primary&quot;>Upgrade to Premium</span></span><small class=&quot;tom-select-custom-hide&quot;>Only visible to project members</small></span></span>">Private to project members</option>
-                                                            <option value="privacy3" data-option-template="<span class=&quot;d-flex&quot;><i class=&quot;bi-person fs2 text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;><span class=&quot;d-block&quot;>Private to me</span><small class=&quot;tom-select-custom-hide&quot;>Only visible to you</small></span></span>">Private to me</option>
-                                                        </select>
-                                                    </div>
-                                                    {/* End Select */}
-                                                </div>
-                                                {/* End Form */}
-                                            </div>
-                                            {/* End Col */}
-                                        </div>
-                                        {/* End Form Row */}
-                                        <div className="d-grid gap-2">
-                                            {/* Check */}
-                                            <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" defaultValue id="budgetNewProjectCheckbox" />
-                                                <label className="form-check-label" htmlFor="budgetNewProjectCheckbox">
-                                                    Budget resets every month
-                                                </label>
-                                            </div>
-                                            {/* End Check */}
-                                            {/* Check */}
-                                            <div className="form-check">
-                                                <input className="form-check-input" type="checkbox" defaultValue id="emailAlertNewProjectCheckbox" defaultChecked />
-                                                <label className="form-check-label" htmlFor="emailAlertNewProjectCheckbox">
-                                                    Send email alerts if project exceeds <span className="font-weight-bold">50.00%</span> of budget
-                                                </label>
-                                            </div>
-                                            {/* End Check */}
-                                        </div>
-                                        {/* Footer */}
-                                        <div className="d-flex align-items-center mt-5">
-                                            <button type="button" className="btn btn-ghost-secondary me-2" data-hs-step-form-prev-options="{
-                       &quot;targetSelector&quot;: &quot;#createProjectStepDetails&quot;
-                     }">
-                                                <i className="bi-chevron-left" /> Previous step
-                                            </button>
-                                            <div className="ms-auto">
-                                                <button type="button" className="btn btn-primary" data-hs-step-form-next-options="{
-                              &quot;targetSelector&quot;: &quot;#createProjectStepMembers&quot;
-                            }">
-                                                    Next <i className="bi-chevron-right" />
-                                                </button>
-                                            </div>
-                                        </div>
-                                        {/* End Footer */}
-                                    </div>
-                                    <div id="createProjectStepMembers" style={{ display: 'none' }}>
-                                        {/* Form */}
-                                        <div className="mb-4">
-                                            <div className="input-group mb-2 mb-sm-0">
-                                                <input type="text" className="form-control" name="fullName" placeholder="Search name or emails" aria-label="Search name or emails" />
-                                                <div className="input-group-append input-group-append-last-sm-down-none">
-                                                    {/* Select */}
-                                                    <div className="tom-select-custom tom-select-custom-end">
-                                                        <select className="js-select form-select tom-select-custom-form-select-invite-user" autoComplete="off" data-hs-tom-select-options="{
+                                                                                <option value="New">New</option>
+                                                                                <option value="Qualified">Qualified</option>
+                                                                                <option value="Meeting">Meeting</option>
+                                                                                <option value="Proposal">Proposal</option>
+                                                                                <option value="Negotiation">Negotiation</option>
+                                                                                <option value="Contact">Contact</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        {/* End Select */}
+                                                                    </div>
+                                                                    {/* End Form */}
+                                                                </div>
+                                                                {/* End Col */}
+                                                                <div className="col-lg-6">
+                                                                    {/* Form */}
+                                                                    <div className="mb-4">
+                                                                        <label htmlFor="privacyNewProjectLabel" className="form-label me-2">Privacy</label>
+                                                                        {/* Select */}
+                                                                        <div className="tom-select-custom">
+                                                                            <select className="js-select form-select" id="privacyNewProjectLabel" data-hs-tom-select-options="{
+                                  &quot;searchInDropdown&quot;: false,
+                                  &quot;hideSearch&quot;: true
+                                }">
+                                                                                <option value="privacy1" data-option-template="<span class=&quot;d-flex&quot;><i class=&quot;bi-people fs2 text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;><span class=&quot;d-block&quot;>Everyone</span><small class=&quot;tom-select-custom-hide&quot;>Public to Front Dashboard</small></span></span>">Everyone</option>
+                                                                                <option value="privacy2" disabled data-option-template="<span class=&quot;d-flex&quot;><i class=&quot;bi-lock fs2 text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;><span class=&quot;d-block&quot;>Private to project members <span class=&quot;badge bg-soft-primary text-primary&quot;>Upgrade to Premium</span></span><small class=&quot;tom-select-custom-hide&quot;>Only visible to project members</small></span></span>">Private to project members</option>
+                                                                                <option value="privacy3" data-option-template="<span class=&quot;d-flex&quot;><i class=&quot;bi-person fs2 text-body&quot;></i><span class=&quot;flex-grow-1 ms-2&quot;><span class=&quot;d-block&quot;>Private to me</span><small class=&quot;tom-select-custom-hide&quot;>Only visible to you</small></span></span>">Private to me</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        {/* End Select */}
+                                                                    </div>
+                                                                    {/* End Form */}
+                                                                </div>
+                                                                {/* End Col */}
+                                                            </div>
+                                                            {/* End Form Row */}
+                                                            <div className="d-grid gap-2">
+                                                                {/* Check */}
+                                                                <div className="form-check">
+                                                                    <input className="form-check-input" type="checkbox" defaultValue id="budgetNewProjectCheckbox" />
+                                                                    <label className="form-check-label" htmlFor="budgetNewProjectCheckbox">
+                                                                        Budget resets every month
+                                                                    </label>
+                                                                </div>
+                                                                {/* End Check */}
+                                                                {/* Check */}
+                                                                <div className="form-check">
+                                                                    <input className="form-check-input" type="checkbox" defaultValue id="emailAlertNewProjectCheckbox" defaultChecked />
+                                                                    <label className="form-check-label" htmlFor="emailAlertNewProjectCheckbox">
+                                                                        Send email alerts if project exceeds <span className="font-weight-bold">50.00%</span> of budget
+                                                                    </label>
+                                                                </div>
+                                                                {/* End Check */}
+                                                            </div>
+                                                        </div>
+                                                    }
+                                                    {activeStep === 2 &&
+                                                        <div id="createProjectStepMembers">
+                                                            {/* Form */}
+                                                            <div className="mb-4">
+                                                                <div className="input-group mb-2 mb-sm-0">
+                                                                    <input type="text" className="form-control" name="fullName" placeholder="Search name or emails" aria-label="Search name or emails" />
+                                                                    <div className="input-group-append input-group-append-last-sm-down-none">
+                                                                        {/* Select */}
+                                                                        <div className="tom-select-custom tom-select-custom-end">
+                                                                            <select className="js-select form-select tom-select-custom-form-select-invite-user" autoComplete="off" data-hs-tom-select-options="{
                                   &quot;searchInDropdown&quot;: false,
                                   &quot;hideSearch&quot;: true,
                                   &quot;dropdownWidth&quot;: &quot;11rem&quot;
                                 }">
-                                                            <option value="guest" selected>Guest</option>
-                                                            <option value="can edit">Can edit</option>
-                                                            <option value="can comment">Can comment</option>
-                                                            <option value="full access">Full access</option>
-                                                        </select>
-                                                    </div>
-                                                    {/* End Select */}
-                                                    <a className="btn btn-primary d-none d-sm-inline-block" href="javascript:;">Invite</a>
-                                                </div>
-                                            </div>
-                                            <a className="btn btn-primary w-100 d-sm-none" href="javascript:;">Invite</a>
-                                        </div>
-                                        {/* End Form */}
-                                        <ul className="list-unstyled list-py-3 mb-5">
-                                            {/* List Group Item */}
-                                            <li>
-                                                <div className="d-flex">
-                                                    <div className="flex-shrink-0">
-                                                        <span className="icon icon-soft-dark icon-sm icon-circle">
-                                                            <i className="bi-people-fill" />
-                                                        </span>
-                                                    </div>
-                                                    <div className="flex-grow-1 ms-3">
-                                                        <div className="row align-items-center">
-                                                            <div className="col-sm">
-                                                                <h5 className="text-body mb-0">#digitalmarketing</h5>
-                                                                <span className="d-block fs-6">8 members</span>
+                                                                                <option value="guest" selected>Guest</option>
+                                                                                <option value="can edit">Can edit</option>
+                                                                                <option value="can comment">Can comment</option>
+                                                                                <option value="full access">Full access</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        {/* End Select */}
+                                                                        <a className="btn btn-primary d-none d-sm-inline-block" href="javascript:;">Invite</a>
+                                                                    </div>
+                                                                </div>
+                                                                <a className="btn btn-primary w-100 d-sm-none" href="javascript:;">Invite</a>
                                                             </div>
-                                                            {/* End Col */}
-                                                            <div className="col-sm-auto">
-                                                                {/* Select */}
-                                                                <div className="tom-select-custom tom-select-custom-sm-end">
-                                                                    <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
+                                                            {/* End Form */}
+                                                            <ul className="list-unstyled list-py-3 mb-5">
+                                                                {/* List Group Item */}
+                                                                <li>
+                                                                    <div className="d-flex">
+                                                                        <div className="flex-shrink-0">
+                                                                            <span className="icon icon-soft-dark icon-sm icon-circle">
+                                                                                <i className="bi-people-fill" />
+                                                                            </span>
+                                                                        </div>
+                                                                        <div className="flex-grow-1 ms-3">
+                                                                            <div className="row align-items-center">
+                                                                                <div className="col-sm">
+                                                                                    <h5 className="text-body mb-0">#digitalmarketing</h5>
+                                                                                    <span className="d-block fs-6">8 members</span>
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                                <div className="col-sm-auto">
+                                                                                    {/* Select */}
+                                                                                    <div className="tom-select-custom tom-select-custom-sm-end">
+                                                                                        <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
                                         &quot;searchInDropdown&quot;: false,
                                         &quot;hideSearch&quot;: true,
                                         &quot;dropdownWidth&quot;: &quot;11rem&quot;
                                       }">
-                                                                        <option value="guest" selected>Guest</option>
-                                                                        <option value="can edit">Can edit</option>
-                                                                        <option value="can comment">Can comment</option>
-                                                                        <option value="full access">Full access</option>
-                                                                        <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
-                                                                    </select>
-                                                                </div>
-                                                                {/* End Select */}
-                                                            </div>
-                                                            {/* End Col */}
-                                                        </div>
-                                                        {/* End Row */}
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            {/* End List Group Item */}
-                                            {/* List Group Item */}
-                                            <li>
-                                                <div className="d-flex">
-                                                    <div className="flex-shrink-0">
-                                                        <div className="avatar avatar-sm avatar-circle">
-                                                            <img className="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex-grow-1 ms-3">
-                                                        <div className="row align-items-center">
-                                                            <div className="col-sm">
-                                                                <h5 className="text-body mb-0">David Harrison</h5>
-                                                                <span className="d-block fs-6">david@site.com</span>
-                                                            </div>
-                                                            {/* End Col */}
-                                                            <div className="col-sm-auto">
-                                                                {/* Select */}
-                                                                <div className="tom-select-custom tom-select-custom-sm-end">
-                                                                    <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
+                                                                                            <option value="guest" selected>Guest</option>
+                                                                                            <option value="can edit">Can edit</option>
+                                                                                            <option value="can comment">Can comment</option>
+                                                                                            <option value="full access">Full access</option>
+                                                                                            <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    {/* End Select */}
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                            </div>
+                                                                            {/* End Row */}
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                {/* End List Group Item */}
+                                                                {/* List Group Item */}
+                                                                <li>
+                                                                    <div className="d-flex">
+                                                                        <div className="flex-shrink-0">
+                                                                            <div className="avatar avatar-sm avatar-circle">
+                                                                                <img className="avatar-img" src="./assets/img/160x160/img3.jpg" alt="Image Description" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="flex-grow-1 ms-3">
+                                                                            <div className="row align-items-center">
+                                                                                <div className="col-sm">
+                                                                                    <h5 className="text-body mb-0">David Harrison</h5>
+                                                                                    <span className="d-block fs-6">david@site.com</span>
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                                <div className="col-sm-auto">
+                                                                                    {/* Select */}
+                                                                                    <div className="tom-select-custom tom-select-custom-sm-end">
+                                                                                        <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
                                         &quot;searchInDropdown&quot;: false,
                                         &quot;hideSearch&quot;: true,
                                         &quot;dropdownWidth&quot;: &quot;11rem&quot;
                                       }">
-                                                                        <option value="guest" selected>Guest</option>
-                                                                        <option value="can edit">Can edit</option>
-                                                                        <option value="can comment">Can comment</option>
-                                                                        <option value="full access">Full access</option>
-                                                                        <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
-                                                                    </select>
-                                                                </div>
-                                                                {/* End Select */}
-                                                            </div>
-                                                            {/* End Col */}
-                                                        </div>
-                                                        {/* End Row */}
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            {/* End List Group Item */}
-                                            {/* List Group Item */}
-                                            <li>
-                                                <div className="d-flex">
-                                                    <div className="flex-shrink-0">
-                                                        <div className="avatar avatar-sm avatar-circle">
-                                                            <img className="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description" />
-                                                        </div>
-                                                    </div>
-                                                    <div className="flex-grow-1 ms-3">
-                                                        <div className="row align-items-center">
-                                                            <div className="col-sm">
-                                                                <h5 className="text-body mb-0">Ella Lauda <i className="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed" /></h5>
-                                                                <span className="d-block fs-6">Markvt@site.com</span>
-                                                            </div>
-                                                            {/* End Col */}
-                                                            <div className="col-sm-auto">
-                                                                {/* Select */}
-                                                                <div className="tom-select-custom tom-select-custom-sm-end">
-                                                                    <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
+                                                                                            <option value="guest" selected>Guest</option>
+                                                                                            <option value="can edit">Can edit</option>
+                                                                                            <option value="can comment">Can comment</option>
+                                                                                            <option value="full access">Full access</option>
+                                                                                            <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    {/* End Select */}
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                            </div>
+                                                                            {/* End Row */}
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                {/* End List Group Item */}
+                                                                {/* List Group Item */}
+                                                                <li>
+                                                                    <div className="d-flex">
+                                                                        <div className="flex-shrink-0">
+                                                                            <div className="avatar avatar-sm avatar-circle">
+                                                                                <img className="avatar-img" src="./assets/img/160x160/img9.jpg" alt="Image Description" />
+                                                                            </div>
+                                                                        </div>
+                                                                        <div className="flex-grow-1 ms-3">
+                                                                            <div className="row align-items-center">
+                                                                                <div className="col-sm">
+                                                                                    <h5 className="text-body mb-0">Ella Lauda <i className="tio-verified text-primary" data-toggle="tooltip" data-placement="top" title="Top endorsed" /></h5>
+                                                                                    <span className="d-block fs-6">Markvt@site.com</span>
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                                <div className="col-sm-auto">
+                                                                                    {/* Select */}
+                                                                                    <div className="tom-select-custom tom-select-custom-sm-end">
+                                                                                        <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
                                         &quot;searchInDropdown&quot;: false,
                                         &quot;hideSearch&quot;: true,
                                         &quot;dropdownWidth&quot;: &quot;11rem&quot;
                                       }">
-                                                                        <option value="guest" selected>Guest</option>
-                                                                        <option value="can edit">Can edit</option>
-                                                                        <option value="can comment">Can comment</option>
-                                                                        <option value="full access">Full access</option>
-                                                                        <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
-                                                                    </select>
-                                                                </div>
-                                                                {/* End Select */}
-                                                            </div>
-                                                            {/* End Col */}
-                                                        </div>
-                                                        {/* End Row */}
-                                                    </div>
-                                                </div>
-                                            </li>
-                                            {/* End List Group Item */}
-                                            {/* List Group Item */}
-                                            <li>
-                                                <div className="d-flex">
-                                                    <div className="flex-shrink-0">
-                                                        <span className="icon icon-soft-dark icon-sm icon-circle">
-                                                            <i className="bi-people-fill" />
-                                                        </span>
-                                                    </div>
-                                                    <div className="flex-grow-1 ms-3">
-                                                        <div className="row align-items-center">
-                                                            <div className="col-sm">
-                                                                <h5 className="text-body mb-0">#conference</h5>
-                                                                <span className="d-block fs-6">3 members</span>
-                                                            </div>
-                                                            {/* End Col */}
-                                                            <div className="col-sm-auto">
-                                                                {/* Select */}
-                                                                <div className="tom-select-custom tom-select-custom-sm-end">
-                                                                    <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
+                                                                                            <option value="guest" selected>Guest</option>
+                                                                                            <option value="can edit">Can edit</option>
+                                                                                            <option value="can comment">Can comment</option>
+                                                                                            <option value="full access">Full access</option>
+                                                                                            <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    {/* End Select */}
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                            </div>
+                                                                            {/* End Row */}
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                {/* End List Group Item */}
+                                                                {/* List Group Item */}
+                                                                <li>
+                                                                    <div className="d-flex">
+                                                                        <div className="flex-shrink-0">
+                                                                            <span className="icon icon-soft-dark icon-sm icon-circle">
+                                                                                <i className="bi-people-fill" />
+                                                                            </span>
+                                                                        </div>
+                                                                        <div className="flex-grow-1 ms-3">
+                                                                            <div className="row align-items-center">
+                                                                                <div className="col-sm">
+                                                                                    <h5 className="text-body mb-0">#conference</h5>
+                                                                                    <span className="d-block fs-6">3 members</span>
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                                <div className="col-sm-auto">
+                                                                                    {/* Select */}
+                                                                                    <div className="tom-select-custom tom-select-custom-sm-end">
+                                                                                        <select className="js-select form-select form-select-borderless tom-select-custom-form-select-invite-user tom-select-form-select-ps-0" autoComplete="off" data-hs-tom-select-options="{
                                         &quot;searchInDropdown&quot;: false,
                                         &quot;hideSearch&quot;: true,
                                         &quot;dropdownWidth&quot;: &quot;11rem&quot;
                                       }">
-                                                                        <option value="guest" selected>Guest</option>
-                                                                        <option value="can edit">Can edit</option>
-                                                                        <option value="can comment">Can comment</option>
-                                                                        <option value="full access">Full access</option>
-                                                                        <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
-                                                                    </select>
-                                                                </div>
-                                                                {/* End Select */}
+                                                                                            <option value="guest" selected>Guest</option>
+                                                                                            <option value="can edit">Can edit</option>
+                                                                                            <option value="can comment">Can comment</option>
+                                                                                            <option value="full access">Full access</option>
+                                                                                            <option value="remove" data-option-template="<div class=&quot;text-danger&quot;>Remove</div>">Remove</option>
+                                                                                        </select>
+                                                                                    </div>
+                                                                                    {/* End Select */}
+                                                                                </div>
+                                                                                {/* End Col */}
+                                                                            </div>
+                                                                            {/* End Row */}
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                                {/* End List Group Item */}
+                                                            </ul>
+                                                            <div className="d-grid gap-3">
+                                                                {/* Form Switch */}
+                                                                <label className="row form-check form-switch" htmlFor="addTeamPreferencesNewProjectSwitch1">
+                                                                    <span className="col-8 col-sm-9 ms-0">
+                                                                        <i className="bi-bell text-primary me-3" />
+                                                                        <span className="text-dark">Inform all project members</span>
+                                                                    </span>
+                                                                    <span className="col-4 col-sm-3 text-end">
+                                                                        <input type="checkbox" className="form-check-input" id="addTeamPreferencesNewProjectSwitch1" defaultChecked />
+                                                                    </span>
+                                                                </label>
+                                                                {/* End Form Switch */}
+                                                                {/* Form Switch */}
+                                                                <label className="row form-check form-switch" htmlFor="addTeamPreferencesNewProjectSwitch2">
+                                                                    <span className="col-8 col-sm-9 ms-0">
+                                                                        <i className="bi-chat-left-dots text-primary me-3" />
+                                                                        <span className="text-dark">Show team activity</span>
+                                                                    </span>
+                                                                    <span className="col-4 col-sm-3 text-end">
+                                                                        <input type="checkbox" className="form-check-input" id="addTeamPreferencesNewProjectSwitch2" />
+                                                                    </span>
+                                                                </label>
+                                                                {/* End Form Switch */}
                                                             </div>
-                                                            {/* End Col */}
                                                         </div>
-                                                        {/* End Row */}
-                                                    </div>
+                                                    }
                                                 </div>
-                                            </li>
-                                            {/* End List Group Item */}
-                                        </ul>
-                                        <div className="d-grid gap-3">
-                                            {/* Form Switch */}
-                                            <label className="row form-check form-switch" htmlFor="addTeamPreferencesNewProjectSwitch1">
-                                                <span className="col-8 col-sm-9 ms-0">
-                                                    <i className="bi-bell text-primary me-3" />
-                                                    <span className="text-dark">Inform all project members</span>
-                                                </span>
-                                                <span className="col-4 col-sm-3 text-end">
-                                                    <input type="checkbox" className="form-check-input" id="addTeamPreferencesNewProjectSwitch1" defaultChecked />
-                                                </span>
-                                            </label>
-                                            {/* End Form Switch */}
-                                            {/* Form Switch */}
-                                            <label className="row form-check form-switch" htmlFor="addTeamPreferencesNewProjectSwitch2">
-                                                <span className="col-8 col-sm-9 ms-0">
-                                                    <i className="bi-chat-left-dots text-primary me-3" />
-                                                    <span className="text-dark">Show team activity</span>
-                                                </span>
-                                                <span className="col-4 col-sm-3 text-end">
-                                                    <input type="checkbox" className="form-check-input" id="addTeamPreferencesNewProjectSwitch2" />
-                                                </span>
-                                            </label>
-                                            {/* End Form Switch */}
-                                        </div>
-                                        {/* Footer */}
-                                        <div className="d-sm-flex align-items-center mt-5">
-                                            <button type="button" className="btn btn-ghost-secondary mb-3 mb-sm-0 me-2" data-hs-step-form-prev-options="{
-                       &quot;targetSelector&quot;: &quot;#createProjectStepTerms&quot;
-                     }">
-                                                <i className="bi-chevron-left" /> Previous step
-                                            </button>
-                                            <div className="d-flex justify-content-end gap-3 ms-auto">
-                                                <button type="button" className="btn btn-white" data-bs-dismiss="modal" aria-label="Close">Cancel</button>
-                                                <button id="createProjectFinishBtn" type="button" className="btn btn-primary">Create project</button>
-                                            </div>
-                                        </div>
-                                        {/* End Footer */}
+                                                <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
+                                                    <Button
+                                                        color="inherit"
+                                                        disabled={activeStep === 0}
+                                                        onClick={handleBack}
+                                                        sx={{ mr: 1 }}
+                                                    >
+                                                        Back
+                                                    </Button>
+                                                    <Box sx={{ flex: '1 1 auto' }} />
+                                                    <Button onClick={handleNext} sx={{ mr: 1 }}>
+                                                        Next
+                                                    </Button>
+                                                    {activeStep !== steps.length &&
+                                                        (completed[activeStep] ? (
+                                                            <Typography variant="caption" sx={{ display: 'inline-block' }}>
+                                                                Step {activeStep + 1} already completed
+                                                            </Typography>
+                                                        ) : (
+                                                            <Button onClick={handleComplete}>
+                                                                {completedSteps() === totalSteps() - 1
+                                                                    ? 'Finish'
+                                                                    : 'Complete Step'}
+                                                            </Button>
+                                                        ))}
+                                                </Box>
+                                            </React.Fragment>
+                                        )}
                                     </div>
-                                </div>
-                                {/* End Content Step Form */}
-                                {/* Message Body */}
-                                <div id="createProjectStepSuccessMessage" style={{ display: 'none' }}>
-                                    <div className="text-center">
-                                        <img className="img-fluid mb-3" src="./assets/svg/illustrations/oc-hi-five.svg" alt="Image Description" data-hs-theme-appearance="default" style={{ maxWidth: '15rem' }} />
-                                        {/* <img className="img-fluid mb-3" src="./assets/svg/illustrations-light/oc-hi-five.svg" alt="Image Description" data-hs-theme-appearance="dark" style={{ maxWidth: '15rem' }} /> */}
-                                        <div className="mb-4">
-                                            <h2>Successful!</h2>
-                                            <p>New project has been successfully created.</p>
-                                        </div>
-                                        <div className="d-flex justify-content-center gap-3">
-                                            <a className="btn btn-white" href="./projects.html">
-                                                <i className="bi-chevron-left" /> Back to projects
-                                            </a>
-                                            <a className="btn btn-primary" href="javascript:;" data-toggle="modal" data-target="#newProjectModal">
-                                                <i className="bi-building" /> Add new project
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                                {/* End Message Body */}
+                                </Box>
                             </form>
                             {/* End Step Form */}
                         </div>
