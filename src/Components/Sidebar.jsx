@@ -344,25 +344,25 @@ export default function Sidebar() {
                             <span className="dropdown-header mt-4">Apps</span>
                             <small className="bi-three-dots nav-subtitle-replacer" />
                             <div className="nav-item">
-                                <a className="nav-link " href="./apps-kanban.html" data-placement="left">
+                                <a className={getNavLinkClass('/kanban')} href="/kanban" data-placement="left">
                                     <i className="bi-kanban nav-icon" />
                                     <span className="nav-link-title">Kanban</span>
                                 </a>
                             </div>
                             <div className="nav-item">
-                                <a className="nav-link " href="./apps-calendar.html" data-placement="left">
+                                <a className={getNavLinkClass('/calender')} href="/calender" data-placement="left">
                                     <i className="bi-calendar-week nav-icon" />
                                     <span className="nav-link-title">Calendar</span>
                                 </a>
                             </div>
                             <div className="nav-item">
-                                <a className="nav-link " href="./apps-invoice-generator.html" data-placement="left">
+                                <a className={getNavLinkClass('/invoice-generator')} href="/invoice-generator" data-placement="left">
                                     <i className="bi-receipt nav-icon" />
                                     <span className="nav-link-title">Invoice Generator</span>
                                 </a>
                             </div>
                             <div className="nav-item">
-                                <a className="nav-link " href="./apps-file-manager.html" data-placement="left">
+                                <a className={getNavLinkClass('/file-management')} href="/file-management" data-placement="left">
                                     <i className="bi-folder2-open nav-icon" />
                                     <span className="nav-link-title">File Manager</span>
                                 </a>
@@ -375,7 +375,7 @@ export default function Sidebar() {
                                     <span className="nav-link-title">Layouts</span>
                                 </a>
                             </div>
-                            <span className="dropdown-header mt-4">Documentation</span>
+                            {/* <span className="dropdown-header mt-4">Documentation</span>
                             <small className="bi-three-dots nav-subtitle-replacer" />
                             <div className="nav-item">
                                 <a className="nav-link " href="./documentation/index.html" data-placement="left">
@@ -388,7 +388,7 @@ export default function Sidebar() {
                                     <i className="bi-layers nav-icon" />
                                     <span className="nav-link-title">Components</span>
                                 </a>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                     {/* End Content */}

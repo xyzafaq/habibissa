@@ -45,6 +45,10 @@ import EmailVerification from './pages/Authentication/EmailVerification'
 import TwostepVerification from './pages/Authentication/TwostepVerification'
 import Error404 from './pages/Authentication/Error404'
 import Error500 from './pages/Authentication/Error500'
+import Kanban from './pages/Apps/Kanban'
+import Calender from './pages/Apps/Calender'
+import InvoiceGenerator from './pages/Apps/InvoiceGenerator'
+import Filemanagement from './pages/Apps/Filemanagement'
 
 export default function App() {
   return (
@@ -90,9 +94,12 @@ export default function App() {
             <Route path='/reset-password' element={<ResetPassword />} />
             <Route path='/email-verification' element={<EmailVerification />} />
             <Route path='/two-step-verification' element={<TwostepVerification />} />
+            <Route path='/kanban' element={<Kanban />} />
+            <Route path='/calender' element={<Calender />} />
+            <Route path='/invoice-generator' element={<InvoiceGenerator />} />
+            <Route path='/file-management' element={<Filemanagement />} />
             <Route path='/error-404' element={<Error404 />} />
             <Route path='/error-500' element={<Error500 />} />
-
             <Route path='*' element={<Default />} />
           </Routes>
           <FooterOfPage />
